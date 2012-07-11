@@ -1,4 +1,5 @@
-picketbox-quickstarts
-=====================
+PicketBox Quickstarts
+==============
 
-PicketBox Quickstarts provides a lot of useful examples using the PicketBox project
+This repository contains some useful examples about how to use PicketBox features.
+
