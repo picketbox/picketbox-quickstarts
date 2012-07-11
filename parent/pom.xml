@@ -1,0 +1,33 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.picketbox</groupId>
+	<artifactId>picketbox-quickstarts-parent</artifactId>
+	<version>5.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>PicketBox Quickstarts Parent POM</name>
+	<description>PicketBox Quickstarts Parent POM</description>
+	<licenses>
+      <license>
+         <name>lgpl</name>
+         <url>http://repository.jboss.com/licenses/lgpl.txt</url>
+      </license>
+   </licenses>
+   <organization>
+      <name>JBoss Inc.</name>
+      <url>http://www.jboss.org</url>
+   </organization>
+	<properties>
+		<picketbox.core.version>5.0.0-SNAPSHOT</picketbox.core.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox-core</artifactId>
+			<version>${picketbox.core.version}</version>
+		</dependency>
+	</dependencies>
+</project>
