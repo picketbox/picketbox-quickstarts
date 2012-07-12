@@ -14,7 +14,7 @@
 	</context-param>
 
 	<context-param>
-		<param-name>authMgr</param-name>
+		<param-name>org.picketbox.authentication.manager</param-name>
 		<param-value>Properties</param-value>
 	</context-param>
 	
