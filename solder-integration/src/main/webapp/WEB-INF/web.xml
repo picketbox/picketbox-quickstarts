@@ -7,9 +7,11 @@
 	id="WebApp_ID"
 	version="3.0">
 	<display-name>picketbox-solder-app</display-name>
+	
+	<!--  -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Production</param-value>
+		<param-value>Development</param-value>
 	</context-param>
 	<context-param>
 		<param-name>facelets.DEVELOPMENT</param-name>
@@ -23,16 +25,4 @@
 		<param-name>com.sun.faces.enableMissingResourceLibraryDetection</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	<!-- <filter> -->
-	<!-- <filter-name>PicketBox Delegating Filter</filter-name> -->
-	<!-- <filter-class>org.picketbox.solder.http.filter.SolderDelegatingSecurityFilter</filter-class> -->
-	<!-- <init-param> -->
-	<!-- <param-name>authSchemeLoader</param-name> -->
-	<!-- <param-value>org.picketbox.solder.authentication.http.SolderHTTPAuthenticationSchemeLoader</param-value> -->
-	<!-- </init-param> -->
-	<!-- </filter> -->
-	<!-- <filter-mapping> -->
-	<!-- <filter-name>PicketBox Delegating Filter</filter-name> -->
-	<!-- <url-pattern>*.jsf</url-pattern> -->
-	<!-- </filter-mapping> -->
 </web-app>
