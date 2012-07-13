@@ -9,9 +9,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
 	
 	<!-- 
-		This Solder configuration defines some of authentication schemes supported 
-		by PicketBox. Only the authentication markes with the qualifier AuthenticationScheme 
-		will considered. In this case the HTTPFormAuthentication. 
+		This Solder configuration defines some of the authentication schemes supported 
+		by PicketBox. Only the bean defined with the AuthenticationScheme qualifier 
+		will be used. In this case the HTTPFormAuthentication. 
 	-->
 	
 	<!-- Configure a HTTPFormAuthentication bean -->
