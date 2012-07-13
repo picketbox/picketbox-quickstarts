@@ -23,7 +23,7 @@
 
 <html>
 <head>
-<title>PicketBox Quickstarts: Simple JEE Application Example</title>
+<title>PicketBox Quickstarts: PicketBox Drools Authorization Example</title>
 <link rel="StyleSheet" href="resources/css/idp.css" type="text/css">
 </head>
 
