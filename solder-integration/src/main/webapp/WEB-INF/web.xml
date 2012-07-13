@@ -8,7 +8,6 @@
 	version="3.0">
 	<display-name>picketbox-solder-app</display-name>
 	
-	<!--  -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>

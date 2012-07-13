@@ -1,0 +1,42 @@
+package org.picketbox.drools.authorization;
+
+import java.security.Principal;
+import org.picketbox.authorization.Resource;
+
+dialect "mvel"
+
+rule "Authorize if principal == anil"
+dialect "java"
+no-loop
+ when
+  $principal : Principal( name == "anil" ) // condition
+  $resource : Resource()
+ then
+    modify ($resource){
+       setAuthorized(true)
+    };
+end
+
+rule "Authorize if principal == Aladdin"
+dialect "java"
+no-loop
+ when
+  $principal : Principal( name == "Aladdin" ) // condition
+  $resource : Resource()
+ then
+    modify ($resource){
+       setAuthorized(true)
+    };
+end
+
+rule "Authorize if principal == admin"
+dialect "java"
+no-loop
+ when
+  $principal : Principal( name == "admin" ) // condition
+  $resource : Resource()
+ then
+    modify ($resource){
+       setAuthorized(true)
+    };
+end
