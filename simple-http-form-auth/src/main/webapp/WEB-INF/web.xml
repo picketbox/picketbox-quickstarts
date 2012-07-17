@@ -22,13 +22,22 @@
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<filter-class>org.picketbox.core.http.filters.DelegatingSecurityFilter</filter-class>
 	</filter>
+	
+	<!-- Protected Resources -->
 	<filter-mapping>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<url-pattern>/index.jsp</url-pattern>
 	</filter-mapping>
 	
+	<!-- Authentication Processing URI -->
 	<filter-mapping>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<url-pattern>/j_security_check</url-pattern>
+	</filter-mapping>
+
+	<!-- Logout processing URI -->
+	<filter-mapping>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<url-pattern>/picketbox_logout</url-pattern>
 	</filter-mapping>
 </web-app>
