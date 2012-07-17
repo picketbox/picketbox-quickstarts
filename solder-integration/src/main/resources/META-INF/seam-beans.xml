@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:s="urn:java:ee"
 	xmlns:mail="urn:java:org.jboss.seam.mail.core"
-	xmlns:pb="urn:java:org.picketbox.authentication.http"
-	xmlns:pbAuthImpl="urn:java:org.picketbox.authentication.impl"
-	xmlns:pbs="urn:java:org.picketbox.authentication.solder"
+	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
+	xmlns:pbAuthImpl="urn:java:org.picketbox.core.authentication.impl"
+	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
 	
 	<!-- 
