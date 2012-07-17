@@ -7,33 +7,35 @@
 	id="WebApp_ID"
 	version="3.0">
 	<display-name>auth-simple-jee</display-name>
-	
 	<context-param>
 		<param-name>org.picketbox.authentication</param-name>
 		<param-value>FORM</param-value>
 	</context-param>
-
 	<context-param>
 		<param-name>org.picketbox.authentication.manager</param-name>
 		<param-value>Properties</param-value>
 	</context-param>
-
 	<context-param>
 		<param-name>org.picketbox.authorization.manager</param-name>
 		<param-value>Drools</param-value>
 	</context-param>
-	
 	<filter>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<filter-class>org.picketbox.core.http.filters.DelegatingSecurityFilter</filter-class>
 	</filter>
+	<!-- Protected Resources -->
 	<filter-mapping>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<url-pattern>/index.jsp</url-pattern>
 	</filter-mapping>
-	
+	<!-- Authentication Processing URI -->
 	<filter-mapping>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<url-pattern>/j_security_check</url-pattern>
+	</filter-mapping>
+	<!-- Logout processing URI -->
+	<filter-mapping>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<url-pattern>/picketbox_logout</url-pattern>
 	</filter-mapping>
 </web-app>

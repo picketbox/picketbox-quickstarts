@@ -19,11 +19,11 @@
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText id="menuWelcomeId"
-				value="Logged in as TODO" />
-			<h:commandLink action="#{identity.logout()}" title="Logout">
+				value="Logged in as #{identity.user.name}" />
+			<h:outputLink value="#{request.contextPath}/picketbox_logout" title="Logout">
 				<h:graphicImage value="/resources/img/logout.png" width="24"
 					height="24" />
-			</h:commandLink>
+			</h:outputLink>
 		</rich:toolbarGroup>
 	</rich:toolbar>
 </h:form>
