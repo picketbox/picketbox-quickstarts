@@ -4,6 +4,7 @@
 	xmlns:s="urn:java:ee"
 	xmlns:mail="urn:java:org.jboss.seam.mail.core"
 	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
+	xmlns:pbr="urn:java:org.picketbox.core.resource"
 	xmlns:pbAuthImpl="urn:java:org.picketbox.core.authentication.impl"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
@@ -50,5 +51,14 @@
 			<s:value>5ccc069c403ebaf9f0171e9517f40e41</s:value>
 		</pb:opaque>
 	</pb:HTTPDigestAuthentication>
+	
+	<pbr:ProtectedResourceManager>
+		<s:replaces/>
+		<pbr:resources>
+			<s:value>
+				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED"/>
+			</s:value>
+		</pbr:resources>
+	</pbr:ProtectedResourceManager>
 	
 </beans>
