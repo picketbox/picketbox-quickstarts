@@ -23,11 +23,11 @@
 <html>
 <head>
 <title>PicketBox Quickstarts: PicketBox Solder Example</title>
-<link rel="StyleSheet" href="/resources/css/idp.css" type="text/css">
+<link rel="StyleSheet" href="<%= request.getContextPath() %>/resources/css/idp.css" type="text/css">
 </head>
 
 <body>
-	<img src="/resources/images/picketbox-banner-1180px.png"
+	<img src="<%= request.getContextPath() %>/resources/images/picketbox-banner-1180px.png"
 		style="margin-top: -10px; margin-left: -10px; opacity: 0.4; filter: alpha(opacity = 40);" />
 	<div class="loginBox"
 		style="margin-bottom: 80px; border: 1px solid #000000; width: 310px; background-color: #F8F8F8; align: center;">
