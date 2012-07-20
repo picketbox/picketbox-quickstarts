@@ -20,6 +20,7 @@
 		<module>simple-http-digest-auth</module>
 		<module>simple-http-clientcert-auth</module>
 		<module>simple-ldap-auth</module>
+		<module>simple-jpa-auth</module>
 		<module>solder-integration</module>
 		<module>drools-authorization</module>
 	</modules>

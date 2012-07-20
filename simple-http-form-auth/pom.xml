@@ -12,5 +12,5 @@
 	<artifactId>simple-http-form-auth</artifactId>
 	<packaging>war</packaging>
 	<name>PicketBox HTTP Form Authentication Example</name>
-	<description>This example application demonstrates how to use HTTP Form authentication.</description>
+	<description>This example application demonstrates how to use HTTP FORM authentication.</description>
 </project>
