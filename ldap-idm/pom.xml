@@ -11,8 +11,8 @@
 	</parent>
 	<artifactId>ldap-idm</artifactId>
 	<packaging>war</packaging>
-	<name>PicketBox Solder Integration Example</name>
-	<description>This example application demonstrates how to use PicketBox Solder integration.</description>
+	<name>PicketBox LDAP Identity Manager Example</name>
+	<description>This example application demonstrates how to use PicketBox LDAP Identity Manager.</description>
 	
 	<properties>
 		<richfaces.version>4.0.0.Final</richfaces.version>
