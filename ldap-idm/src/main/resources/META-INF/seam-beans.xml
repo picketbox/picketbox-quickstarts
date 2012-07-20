@@ -1,0 +1,110 @@
+<beans
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:s="urn:java:ee"
+	xmlns:mail="urn:java:org.jboss.seam.mail.core"
+	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
+	xmlns:pbr="urn:java:org.picketbox.core.resource"
+	xmlns:pbidm="urn:java:org.picketbox.core.identity.impl"
+	xmlns:pbAuthImpl="urn:java:org.picketbox.core.authentication.impl"
+	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
+	
+	<!-- 
+		This Solder configuration defines some of the authentication schemes supported 
+		by PicketBox. Only the bean defined with the AuthenticationScheme qualifier 
+		will be used. In this case the HTTPFormAuthentication. 
+	-->
+	
+	<!-- Configure a HTTPFormAuthentication bean -->
+	<pb:HTTPFormAuthentication>
+		<s:replaces/>
+		<pbs:AuthenticationScheme/>
+		<pb:authManager>
+			<s:value>
+				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
+			</s:value>
+		</pb:authManager>
+	</pb:HTTPFormAuthentication>
+	
+	<pbidm:LDAPBasedIdentityManager>
+		<pbidm:options>
+			<s:entry>
+				<s:key>java.naming.provider.url</s:key>
+				<s:value>ldap://localhost:10389/</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>principalDNPrefix</s:key>
+				<s:value>uid=</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>principalDNSuffix</s:key>
+				<s:value>,ou=People,dc=jboss,dc=org</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>java.naming.security.principal</s:key>
+				<s:value>uid=jduke,ou=People,dc=jboss,dc=org</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>java.naming.security.credentials</s:key>
+				<s:value>theduke</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>rolesCtxDN</s:key>
+				<s:value>ou=Roles,dc=jboss,dc=org</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>uidAttributeID</s:key>
+				<s:value>member</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>matchOnUserDN</s:key>
+				<s:value>true</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>roleAttributeID</s:key>
+				<s:value>cn</s:value>
+			</s:entry>
+			<s:entry>
+				<s:key>roleAttributeIsDN</s:key>
+				<s:value>false</s:value>
+			</s:entry>
+		</pbidm:options>
+	</pbidm:LDAPBasedIdentityManager>
+	
+	<!-- Configure a HTTPBasicAuthentication bean -->
+	<pb:HTTPBasicAuthentication>
+		<s:replaces/>
+		<pb:authManager>
+			<s:value>
+				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
+			</s:value>
+		</pb:authManager>
+	</pb:HTTPBasicAuthentication>
+	
+	<!-- Configure a HTTPDigestAuthentication bean -->
+	<pb:HTTPDigestAuthentication>
+		<s:replaces/>
+		<pb:authManager>
+			<s:value>
+				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
+			</s:value>
+		</pb:authManager>
+		<pb:realmName>
+			<s:value>testrealm@host.com</s:value>
+		</pb:realmName>
+		<pb:opaque>
+			<s:value>5ccc069c403ebaf9f0171e9517f40e41</s:value>
+		</pb:opaque>
+	</pb:HTTPDigestAuthentication>
+	
+	<pbr:ProtectedResourceManager>
+		<s:replaces/>
+		<pbr:resources>
+			<s:value>
+				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED"/>
+			</s:value>
+		</pbr:resources>
+	</pbr:ProtectedResourceManager>
+	
+</beans>
