@@ -5,30 +5,6 @@ import org.picketbox.core.authorization.Resource;
 
 dialect "mvel"
 
-rule "Authorize if principal == anil"
-dialect "java"
-no-loop
- when
-  $principal : Principal( name == "anil" ) // condition
-  $resource : Resource()
- then
-    modify ($resource){
-       setAuthorized(true)
-    };
-end
-
-rule "Authorize if principal == Aladdin"
-dialect "java"
-no-loop
- when
-  $principal : Principal( name == "Aladdin" ) // condition
-  $resource : Resource()
- then
-    modify ($resource){
-       setAuthorized(true)
-    };
-end
-
 rule "Authorize if principal == admin"
 dialect "java"
 no-loop
@@ -38,5 +14,17 @@ no-loop
  then
     modify ($resource){
        setAuthorized(true)
+    };
+end
+
+rule "Authorize if principal == guest"
+dialect "java"
+no-loop
+ when
+  $principal : Principal( name == "guest" ) // condition
+  $resource : Resource()
+ then
+    modify ($resource){
+       setAuthorized(false)
     };
 end
