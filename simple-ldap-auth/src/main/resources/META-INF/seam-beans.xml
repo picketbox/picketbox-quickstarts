@@ -6,7 +6,7 @@
 	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
 	xmlns:pbr="urn:java:org.picketbox.core.resource"
 	xmlns:pbldapc="urn:java:org.picketbox.core.ldap.config"
-	xmlns:pbAuthImpl="urn:java:org.picketbox.core.authentication.impl"
+	xmlns:pbauthmgr="urn:java:org.picketbox.core.authentication.manager"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
 	
@@ -20,57 +20,28 @@
 	<pb:HTTPFormAuthentication>
 		<s:replaces/>
 		<pbs:AuthenticationScheme/>
-		<pb:authManager>
-			<s:value>
-				<pbAuthImpl:LDAPAuthenticationManager>
-					<pbAuthImpl:userDN>
-						<s:value>uid=CHANGE_USER,ou=People,dc=jboss,dc=org</s:value>
-					</pbAuthImpl:userDN>
-					<pbAuthImpl:ldapStoreConfig>
-						<s:value>
-							<pbldapc:BasicLDAPStoreConfig>
-								<pbldapc:storeURL>
-									<s:value>ldap://localhost:10389/</s:value>
-								</pbldapc:storeURL>
-								<pbldapc:userName>
-									<s:value>uid=CHANGE_USER,ou=People,dc=jboss,dc=org</s:value>
-								</pbldapc:userName>
-								<pbldapc:userPassword>
-									<s:value>WILL_BE_REPLACED</s:value>
-								</pbldapc:userPassword>
-							</pbldapc:BasicLDAPStoreConfig>
-						</s:value>
-					</pbAuthImpl:ldapStoreConfig>
-				</pbAuthImpl:LDAPAuthenticationManager>
-			</s:value>
-		</pb:authManager>
 	</pb:HTTPFormAuthentication>
-	
-	<!-- Configure a HTTPBasicAuthentication bean -->
-	<pb:HTTPBasicAuthentication>
-		<s:replaces/>
-		<pb:authManager>
+
+	<pbauthmgr:LDAPAuthenticationManager>
+		<pbauthmgr:userDN>
+			<s:value>uid=CHANGE_USER,ou=People,dc=jboss,dc=org</s:value>
+		</pbauthmgr:userDN>
+		<pbauthmgr:ldapStoreConfig>
 			<s:value>
-				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
+				<pbldapc:BasicLDAPStoreConfig>
+					<pbldapc:storeURL>
+						<s:value>ldap://localhost:10389/</s:value>
+					</pbldapc:storeURL>
+					<pbldapc:userName>
+						<s:value>uid=CHANGE_USER,ou=People,dc=jboss,dc=org</s:value>
+					</pbldapc:userName>
+					<pbldapc:userPassword>
+						<s:value>WILL_BE_REPLACED</s:value>
+					</pbldapc:userPassword>
+				</pbldapc:BasicLDAPStoreConfig>
 			</s:value>
-		</pb:authManager>
-	</pb:HTTPBasicAuthentication>
-	
-	<!-- Configure a HTTPDigestAuthentication bean -->
-	<pb:HTTPDigestAuthentication>
-		<s:replaces/>
-		<pb:authManager>
-			<s:value>
-				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
-			</s:value>
-		</pb:authManager>
-		<pb:realmName>
-			<s:value>testrealm@host.com</s:value>
-		</pb:realmName>
-		<pb:opaque>
-			<s:value>5ccc069c403ebaf9f0171e9517f40e41</s:value>
-		</pb:opaque>
-	</pb:HTTPDigestAuthentication>
+		</pbauthmgr:ldapStoreConfig>
+	</pbauthmgr:LDAPAuthenticationManager>
 	
 	<pbr:ProtectedResourceManager>
 		<s:replaces/>
