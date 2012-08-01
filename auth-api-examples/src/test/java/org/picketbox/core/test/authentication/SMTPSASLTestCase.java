@@ -40,9 +40,9 @@ import org.picketbox.core.authentication.AuthenticationResult;
 import org.picketbox.core.authentication.AuthenticationStatus;
 import org.picketbox.core.authentication.manager.PropertiesFileBasedAuthenticationManager;
 import org.picketbox.core.config.PicketBoxConfiguration;
-import org.picketbox.core.test.authentication.spi.sasl.SMTPAuthenticationCallbackHandler;
 import org.picketbox.core.test.authentication.spi.sasl.TestDIGESTMD5Mechanism;
-import org.picketbox.core.test.authentication.spi.sasl.TestSMTPPLAINMechanism;
+import org.picketbox.core.test.authentication.spi.smtp.SMTPAuthenticationCallbackHandler;
+import org.picketbox.core.test.authentication.spi.smtp.TestSMTPPLAINMechanism;
 
 import com.sun.mail.smtp.SMTPTransport;
 
