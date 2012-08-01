@@ -6,7 +6,7 @@
 	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
 	xmlns:pbr="urn:java:org.picketbox.core.resource"
 	xmlns:pbldapc="urn:java:org.picketbox.core.ldap.config"
-	xmlns:pbAuthImpl="urn:java:org.picketbox.core.authentication.impl"
+	xmlns:pbauthmgr="urn:java:org.picketbox.core.authentication.manager"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
 	
@@ -22,14 +22,14 @@
 		<pbs:AuthenticationScheme/>
 	</pb:HTTPFormAuthentication>
 
-	<pbAuthImpl:DatabaseAuthenticationManager>
-		<pbAuthImpl:jpaJNDIName>
+	<pbauthmgr:DatabaseAuthenticationManager>
+		<pbauthmgr:jpaJNDIName>
 			<s:value>java:/AuthTestEMF</s:value>
-		</pbAuthImpl:jpaJNDIName>
-		<pbAuthImpl:passwordQuery>
+		</pbauthmgr:jpaJNDIName>
+		<pbauthmgr:passwordQuery>
 			<s:value>SELECT PASSWORD FROM PICKETBOX_USERS WHERE USERNAME = ?</s:value>
-		</pbAuthImpl:passwordQuery>
-	</pbAuthImpl:DatabaseAuthenticationManager>
+		</pbauthmgr:passwordQuery>
+	</pbauthmgr:DatabaseAuthenticationManager>
 	
 	<pbr:ProtectedResourceManager>
 		<s:replaces/>
