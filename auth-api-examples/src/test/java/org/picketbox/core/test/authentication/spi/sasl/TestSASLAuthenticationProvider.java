@@ -26,6 +26,7 @@ import java.util.List;
 
 import org.picketbox.core.authentication.AuthenticationMechanism;
 import org.picketbox.core.authentication.impl.AbstractAuthenticationProvider;
+import org.picketbox.core.test.authentication.spi.smtp.TestSMTPPLAINMechanism;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
