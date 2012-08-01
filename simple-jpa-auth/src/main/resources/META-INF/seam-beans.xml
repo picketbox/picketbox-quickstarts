@@ -20,45 +20,16 @@
 	<pb:HTTPFormAuthentication>
 		<s:replaces/>
 		<pbs:AuthenticationScheme/>
-		<pb:authManager>
-			<s:value>
-				<pbAuthImpl:DatabaseAuthenticationManager>
-					<pbAuthImpl:jpaJNDIName>
-						<s:value>java:/AuthTestEMF</s:value>
-					</pbAuthImpl:jpaJNDIName>
-					<pbAuthImpl:passwordQuery>
-						<s:value>SELECT PASSWORD FROM PICKETBOX_USERS WHERE USERNAME = ?</s:value>
-					</pbAuthImpl:passwordQuery>
-				</pbAuthImpl:DatabaseAuthenticationManager>
-			</s:value>
-		</pb:authManager>
 	</pb:HTTPFormAuthentication>
-	
-	<!-- Configure a HTTPBasicAuthentication bean -->
-	<pb:HTTPBasicAuthentication>
-		<s:replaces/>
-		<pb:authManager>
-			<s:value>
-				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
-			</s:value>
-		</pb:authManager>
-	</pb:HTTPBasicAuthentication>
-	
-	<!-- Configure a HTTPDigestAuthentication bean -->
-	<pb:HTTPDigestAuthentication>
-		<s:replaces/>
-		<pb:authManager>
-			<s:value>
-				<pbAuthImpl:PropertiesFileBasedAuthenticationManager/>
-			</s:value>
-		</pb:authManager>
-		<pb:realmName>
-			<s:value>testrealm@host.com</s:value>
-		</pb:realmName>
-		<pb:opaque>
-			<s:value>5ccc069c403ebaf9f0171e9517f40e41</s:value>
-		</pb:opaque>
-	</pb:HTTPDigestAuthentication>
+
+	<pbAuthImpl:DatabaseAuthenticationManager>
+		<pbAuthImpl:jpaJNDIName>
+			<s:value>java:/AuthTestEMF</s:value>
+		</pbAuthImpl:jpaJNDIName>
+		<pbAuthImpl:passwordQuery>
+			<s:value>SELECT PASSWORD FROM PICKETBOX_USERS WHERE USERNAME = ?</s:value>
+		</pbAuthImpl:passwordQuery>
+	</pbAuthImpl:DatabaseAuthenticationManager>
 	
 	<pbr:ProtectedResourceManager>
 		<s:replaces/>
