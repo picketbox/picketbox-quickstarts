@@ -30,7 +30,6 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.picketbox.core.DefaultPicketBoxManager;
 import org.picketbox.core.authentication.AuthenticationMechanism;
 import org.picketbox.core.authentication.AuthenticationProvider;
 import org.picketbox.core.authentication.AuthenticationResult;
@@ -39,12 +38,13 @@ import org.picketbox.core.authentication.AuthenticationStatus;
 import org.picketbox.core.authentication.DigestHolder;
 import org.picketbox.core.authentication.PicketBoxConstants;
 import org.picketbox.core.authentication.manager.PropertiesFileBasedAuthenticationManager;
-import org.picketbox.core.config.PicketBoxConfiguration;
 import org.picketbox.core.exceptions.AuthenticationException;
 import org.picketbox.core.exceptions.FormatException;
 import org.picketbox.core.test.authentication.spi.http.HTTPDigestAuthHandler;
 import org.picketbox.core.test.authentication.spi.http.HTTPDigestMechanism;
 import org.picketbox.core.util.HTTPDigestUtil;
+import org.picketbox.http.PicketBoxManager;
+import org.picketbox.http.config.PicketBoxConfiguration;
 import org.picketbox.test.http.TestServletRequest;
 import org.picketbox.test.http.TestServletResponse;
 
@@ -54,7 +54,7 @@ import org.picketbox.test.http.TestServletResponse;
  */
 public class HTTPDigestAuthenticationProviderTestCase {
 
-    private DefaultPicketBoxManager picketboxManager;
+    private PicketBoxManager picketboxManager;
 
     @Before
     public void onSetup() {
@@ -64,7 +64,7 @@ public class HTTPDigestAuthenticationProviderTestCase {
         
         configuration.authentication().addAuthManager(new PropertiesFileBasedAuthenticationManager());
         
-        this.picketboxManager = (DefaultPicketBoxManager) configuration.buildAndStart();
+        this.picketboxManager = (PicketBoxManager) configuration.buildAndStart();
     }
     
     @Test
