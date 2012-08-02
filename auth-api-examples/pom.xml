@@ -58,5 +58,18 @@
 			<version>1.4.4</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox-http</artifactId>
+			<version>5.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox-http</artifactId>
+			<version>5.0.0-SNAPSHOT</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

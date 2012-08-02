@@ -32,7 +32,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.picketbox.core.PicketBoxManager;
+import org.picketbox.core.DefaultPicketBoxManager;
 import org.picketbox.core.PicketBoxSubject;
 import org.picketbox.core.authentication.AuthenticationClient;
 import org.picketbox.core.authentication.AuthenticationMechanism;
@@ -58,7 +58,7 @@ public class SASLAuthenticationProviderTestCase {
     private InputStream clientInputStream;
     private OutputStream clientOutputStream;
     
-    private PicketBoxManager picketboxManager;
+    private DefaultPicketBoxManager picketboxManager;
 
     @Before
     public void onSetup() {
@@ -68,7 +68,7 @@ public class SASLAuthenticationProviderTestCase {
         
         configuration.authentication().addAuthManager(new PropertiesFileBasedAuthenticationManager());
         
-        this.picketboxManager = configuration.buildAndStart();
+        this.picketboxManager = (DefaultPicketBoxManager) configuration.buildAndStart();
     }
 
     @Test

@@ -26,7 +26,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.picketbox.core.PicketBoxManager;
+import org.picketbox.core.DefaultPicketBoxManager;
 import org.picketbox.core.authentication.AuthenticationMechanism;
 import org.picketbox.core.authentication.AuthenticationProvider;
 import org.picketbox.core.authentication.AuthenticationResult;
@@ -43,7 +43,7 @@ import org.picketbox.core.exceptions.AuthenticationException;
  */
 public class SimpleAuthenticationProviderTestCase {
 
-    private PicketBoxManager picketboxManager;
+    private DefaultPicketBoxManager picketboxManager;
 
     @Before
     public void onSetup() {
@@ -53,7 +53,7 @@ public class SimpleAuthenticationProviderTestCase {
         
         configuration.authentication().addAuthManager(new PropertiesFileBasedAuthenticationManager());
         
-        this.picketboxManager = configuration.buildAndStart();
+        this.picketboxManager = (DefaultPicketBoxManager) configuration.buildAndStart();
     }
     
     @Test

@@ -28,5 +28,10 @@
 			<artifactId>picketbox-core</artifactId>
 			<version>${picketbox.core.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox-http</artifactId>
+			<version>${picketbox.core.version}</version>
+		</dependency>
 	</dependencies>
 </project>
