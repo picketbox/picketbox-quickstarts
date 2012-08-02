@@ -3,7 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:s="urn:java:ee"
 	xmlns:mail="urn:java:org.jboss.seam.mail.core"
-	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
+	xmlns:pbhttpauth="urn:java:org.picketbox.http.authentication"
+	xmlns:pbhttpr="urn:java:org.picketbox.http.resource"
 	xmlns:pbr="urn:java:org.picketbox.core.resource"
 	xmlns:pbauthmgr="urn:java:org.picketbox.core.authentication.manager"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
@@ -16,20 +17,20 @@
 	-->
 	
 	<!-- Configure a HTTPFormAuthentication bean -->
-	<pb:HTTPFormAuthentication>
+	<pbhttpauth:HTTPFormAuthentication>
 		<s:replaces/>
 		<pbs:AuthenticationScheme/>
-	</pb:HTTPFormAuthentication>
+	</pbhttpauth:HTTPFormAuthentication>
 	
 	<pbauthmgr:PropertiesFileBasedAuthenticationManager/>
 		
-	<pbr:ProtectedResourceManager>
+	<pbhttpr:HTTPProtectedResourceManager>
 		<s:replaces/>
-		<pbr:resources>
+		<pbhttpr:resources>
 			<s:value>
 				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED"/>
 			</s:value>
-		</pbr:resources>
-	</pbr:ProtectedResourceManager>
+		</pbhttpr:resources>
+	</pbhttpr:HTTPProtectedResourceManager>
 	
 </beans>

@@ -21,7 +21,7 @@
 	</context-param>
 	<filter>
 		<filter-name>PicketBox Delegating Filter</filter-name>
-		<filter-class>org.picketbox.core.http.filters.DelegatingSecurityFilter</filter-class>
+		<filter-class>org.picketbox.http.filters.DelegatingSecurityFilter</filter-class>
 	</filter>
 	<!-- Protected Resources -->
 	<filter-mapping>

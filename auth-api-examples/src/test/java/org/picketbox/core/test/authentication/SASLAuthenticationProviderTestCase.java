@@ -32,7 +32,6 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.picketbox.core.PicketBoxManager;
 import org.picketbox.core.PicketBoxSubject;
 import org.picketbox.core.authentication.AuthenticationClient;
 import org.picketbox.core.authentication.AuthenticationMechanism;
@@ -41,9 +40,10 @@ import org.picketbox.core.authentication.AuthenticationResult;
 import org.picketbox.core.authentication.AuthenticationService;
 import org.picketbox.core.authentication.AuthenticationStatus;
 import org.picketbox.core.authentication.manager.PropertiesFileBasedAuthenticationManager;
-import org.picketbox.core.config.PicketBoxConfiguration;
 import org.picketbox.core.test.authentication.spi.sasl.SASLAuthenticationCallbackHandler;
 import org.picketbox.core.test.authentication.spi.sasl.TestDIGESTMD5Mechanism;
+import org.picketbox.http.PicketBoxManager;
+import org.picketbox.http.config.PicketBoxConfiguration;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
@@ -78,8 +78,6 @@ public class SASLAuthenticationProviderTestCase {
 
         final AuthenticationMechanism mechanism = authenticationProvider.getMechanism(TestDIGESTMD5Mechanism.class.getName());
 
-        final PropertiesFileBasedAuthenticationManager authManager = new PropertiesFileBasedAuthenticationManager();
-        
         new Thread(new Runnable() {
             public void run() {
                 initializeServer();
