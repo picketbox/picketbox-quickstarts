@@ -22,20 +22,21 @@
 
 package org.picketbox.core.test.authentication;
 
+import java.util.ArrayList;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.picketbox.core.authentication.AuthenticationMechanism;
-import org.picketbox.core.authentication.AuthenticationProvider;
-import org.picketbox.core.authentication.AuthenticationResult;
-import org.picketbox.core.authentication.AuthenticationService;
+import org.picketbox.core.PicketBoxManager;
+import org.picketbox.core.PicketBoxSubject;
 import org.picketbox.core.authentication.handlers.UsernamePasswordAuthHandler;
-import org.picketbox.core.authentication.impl.UserNamePasswordMechanism;
 import org.picketbox.core.authentication.manager.PropertiesFileBasedAuthenticationManager;
+import org.picketbox.core.authorization.Resource;
+import org.picketbox.core.config.PicketBoxConfiguration;
 import org.picketbox.core.exceptions.AuthenticationException;
-import org.picketbox.http.PicketBoxManager;
-import org.picketbox.http.config.PicketBoxConfiguration;
+import org.picketbox.core.exceptions.AuthorizationException;
+import org.picketbox.core.identity.IdentityManager;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
@@ -49,30 +50,49 @@ public class SimpleAuthenticationProviderTestCase {
     public void onSetup() {
         PicketBoxConfiguration configuration = new PicketBoxConfiguration();
 
-        configuration.authentication().addMechanism(new UserNamePasswordMechanism());
+        configuration.identityManager(new IdentityManager() {
+            
+            @Override
+            public PicketBoxSubject getIdentity(PicketBoxSubject resultingSubject) {
+                
+                resultingSubject.setRoleNames(new ArrayList<String>());
+                
+                resultingSubject.getRoleNames().add("Manager");
+                resultingSubject.getRoleNames().add("Financial");
+                
+                return resultingSubject;
+            }
+        });
         
         configuration.authentication().addAuthManager(new PropertiesFileBasedAuthenticationManager());
+        configuration.authorization(new MockAuthorizationManager() {
+            
+            @Override
+            public boolean authorize(Resource resource, PicketBoxSubject subject) throws AuthorizationException {
+                MockResource mockResource = (MockResource) resource;
+                
+                return mockResource.getName().equals("protectedResource");
+            }
+        });
         
         this.picketboxManager = configuration.buildAndStart();
     }
     
     @Test
-    public void testMechanismConfiguration() {
-        AuthenticationProvider authenticationProvider = this.picketboxManager.getAuthenticationProvider();
+    public void testSimpleAuthentication() throws AuthenticationException {
+        PicketBoxSubject authenticatedSubject = this.picketboxManager.authenticate(new UsernamePasswordAuthHandler("admin", "admin"));
         
-        AuthenticationMechanism mechanism = authenticationProvider.getMechanism(UserNamePasswordMechanism.class.getName());
-        
-        AuthenticationService service = mechanism.getService();
-        
-        try {
-            AuthenticationResult result = service.authenticate(new UsernamePasswordAuthHandler("admin", "admin"));
-            
-            Assert.assertNotNull(result.getSubject());
-            Assert.assertTrue(result.getSubject().isAuthenticated());
-        } catch (AuthenticationException e) {
-            e.printStackTrace();
-            Assert.fail("Authentication failed.");
-        }
+        Assert.assertNotNull(authenticatedSubject);
+        Assert.assertTrue(authenticatedSubject.isAuthenticated());
+        Assert.assertFalse(authenticatedSubject.getRoleNames().isEmpty());
+        Assert.assertEquals("Manager", authenticatedSubject.getRoleNames().get(0));
+        Assert.assertEquals("admin", authenticatedSubject.getUser().getName());
+        Assert.assertNotNull(authenticatedSubject.getSession());
+    }
+
+    @Test
+    public void testSimpleAuthorization() throws AuthenticationException {
+        PicketBoxSubject authenticatedSubject = this.picketboxManager.authenticate(new UsernamePasswordAuthHandler("admin", "admin"));
     }
 
 }

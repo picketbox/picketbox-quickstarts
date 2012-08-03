@@ -20,30 +20,25 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-package org.picketbox.core.test.authentication.spi.http;
+package org.picketbox.core.test.authentication;
 
-import org.picketbox.core.authentication.AuthenticationClient;
-import org.picketbox.core.authentication.AuthenticationService;
-import org.picketbox.core.authentication.impl.AbstractAuthenticationMechanism;
+import org.picketbox.core.AbstractPicketBoxLifeCycle;
+import org.picketbox.core.authorization.AuthorizationManager;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
  *
  */
-public class HTTPDigestMechanism extends AbstractAuthenticationMechanism {
+public abstract class MockAuthorizationManager extends AbstractPicketBoxLifeCycle implements AuthorizationManager {
 
-    private HTTPDigestService service;
-    
-    public AuthenticationClient getClient() {
-        return null;
+    @Override
+    protected void doStart() {
+        
     }
 
-    public AuthenticationService getService() {
-        if (service == null) {
-            service = new HTTPDigestService(this);
-        }
-
-        return service;
+    @Override
+    protected void doStop() {
+        
     }
 
 }

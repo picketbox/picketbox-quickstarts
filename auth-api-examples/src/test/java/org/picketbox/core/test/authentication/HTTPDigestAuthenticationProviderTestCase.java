@@ -30,6 +30,8 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.picketbox.core.PicketBoxManager;
+import org.picketbox.core.PicketBoxSubject;
 import org.picketbox.core.authentication.AuthenticationMechanism;
 import org.picketbox.core.authentication.AuthenticationProvider;
 import org.picketbox.core.authentication.AuthenticationResult;
@@ -38,13 +40,12 @@ import org.picketbox.core.authentication.AuthenticationStatus;
 import org.picketbox.core.authentication.DigestHolder;
 import org.picketbox.core.authentication.PicketBoxConstants;
 import org.picketbox.core.authentication.manager.PropertiesFileBasedAuthenticationManager;
+import org.picketbox.core.config.PicketBoxConfiguration;
 import org.picketbox.core.exceptions.AuthenticationException;
 import org.picketbox.core.exceptions.FormatException;
 import org.picketbox.core.test.authentication.spi.http.HTTPDigestAuthHandler;
 import org.picketbox.core.test.authentication.spi.http.HTTPDigestMechanism;
 import org.picketbox.core.util.HTTPDigestUtil;
-import org.picketbox.http.PicketBoxManager;
-import org.picketbox.http.config.PicketBoxConfiguration;
 import org.picketbox.test.http.TestServletRequest;
 import org.picketbox.test.http.TestServletResponse;
 
@@ -64,11 +65,11 @@ public class HTTPDigestAuthenticationProviderTestCase {
         
         configuration.authentication().addAuthManager(new PropertiesFileBasedAuthenticationManager());
         
-        this.picketboxManager = (PicketBoxManager) configuration.buildAndStart();
+        this.picketboxManager = configuration.buildAndStart();
     }
     
     @Test
-    public void testMechanismConfiguration() throws AuthenticationException {
+    public void testAuthenticationProviderDirectAuthentication() throws AuthenticationException {
         TestServletRequest req = new TestServletRequest(new InputStream() {
             @Override
             public int read() throws IOException {
@@ -108,7 +109,47 @@ public class HTTPDigestAuthenticationProviderTestCase {
         result = authenticationService.authenticate(new HTTPDigestAuthHandler(req, resp));
         
         Assert.assertEquals(AuthenticationStatus.SUCCESS, result.getStatus());
-        Assert.assertNotNull(result.getSubject().getUser());
+        Assert.assertNotNull(result.getPrincipal());
+    }
+    
+    @Test
+    public void testPicketBoxFullAuthentication() throws AuthenticationException {
+        TestServletRequest req = new TestServletRequest(new InputStream() {
+            @Override
+            public int read() throws IOException {
+                return 0;
+            }
+        });
+
+        TestServletResponse resp = new TestServletResponse(new OutputStream() {
+
+            @Override
+            public void write(int b) throws IOException {
+                System.out.println(b);
+            }
+        });
+
+        req.setMethod("GET");
+
+        PicketBoxSubject subject = this.picketboxManager.authenticate(new HTTPDigestAuthHandler(req, resp));
+        
+        Assert.assertNotNull(subject);
+        Assert.assertFalse(subject.isAuthenticated());
+        
+        String authorizationHeader = resp.getHeader(PicketBoxConstants.HTTP_WWW_AUTHENTICATE);
+        authorizationHeader = authorizationHeader.substring(7);
+        String[] tokens = HTTPDigestUtil.quoteTokenize(authorizationHeader);
+
+        // Let us get the digest info
+        DigestHolder digest = HTTPDigestUtil.digest(tokens);
+
+        // Get Positive Authentication
+        req.addHeader(PicketBoxConstants.HTTP_AUTHORIZATION_HEADER, "Digest " + getPositive(digest));
+
+        subject = this.picketboxManager.authenticate(new HTTPDigestAuthHandler(req, resp));
+        
+        Assert.assertNotNull(subject);
+        Assert.assertTrue(subject.isAuthenticated());
     }
     
     private String getPositive(DigestHolder digest) {

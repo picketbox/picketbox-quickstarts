@@ -30,18 +30,16 @@ import javax.mail.Session;
 
 import junit.framework.Assert;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.picketbox.core.PicketBoxManager;
 import org.picketbox.core.authentication.AuthenticationClient;
 import org.picketbox.core.authentication.AuthenticationMechanism;
 import org.picketbox.core.authentication.AuthenticationProvider;
 import org.picketbox.core.authentication.AuthenticationResult;
 import org.picketbox.core.authentication.AuthenticationStatus;
 import org.picketbox.core.authentication.manager.PropertiesFileBasedAuthenticationManager;
+import org.picketbox.core.config.PicketBoxConfiguration;
 import org.picketbox.core.test.authentication.spi.smtp.SMTPAuthenticationCallbackHandler;
 import org.picketbox.core.test.authentication.spi.smtp.TestSMTPPLAINMechanism;
-import org.picketbox.http.PicketBoxManager;
-import org.picketbox.http.config.PicketBoxConfiguration;
 
 import com.sun.mail.smtp.SMTPTransport;
 
