@@ -5,7 +5,7 @@
 	xmlns:mail="urn:java:org.jboss.seam.mail.core"
 	xmlns:pbhttpauth="urn:java:org.picketbox.http.authentication"
 	xmlns:pbhttpr="urn:java:org.picketbox.http.resource"
-	xmlns:pbr="urn:java:org.picketbox.core.resource"
+	xmlns:pbr="urn:java:org.picketbox.http.resource"
 	xmlns:pbauthmgr="urn:java:org.picketbox.core.authentication.manager"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xmlns:pbldapc="urn:java:org.picketbox.core.ldap.config"

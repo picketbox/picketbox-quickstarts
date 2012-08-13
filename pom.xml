@@ -24,6 +24,5 @@
 		<module>solder-integration</module>
 		<module>drools-authorization</module>
 		<module>ldap-idm</module>
-		<module>auth-api-examples</module>
 	</modules>
 </project>
