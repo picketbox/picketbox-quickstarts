@@ -1,10 +1,10 @@
-HTTP CLIENT_CERT Authentication Example
+HTTP FORM Authentication Example
 ===================
 
 What is it?
 -----------
 
-This example demonstrates how to enable HTTP CLIENT_CERT Authentication in web applications.
+This example demonstrates how to enable HTTP FORM Authentication in web applications.
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 

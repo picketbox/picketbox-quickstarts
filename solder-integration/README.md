@@ -1,10 +1,12 @@
-HTTP CLIENT_CERT Authentication Example
+Using PicketBox with Solder in CDI applications
 ===================
 
 What is it?
 -----------
 
-This example demonstrates how to enable HTTP CLIENT_CERT Authentication in web applications.
+This example demonstrates how to use PicketBox in CDI Web Applications using Solder.
+
+For more information, see [here](https://docs.jboss.org/author/display/SECURITY/PicketBox+Solder)
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 

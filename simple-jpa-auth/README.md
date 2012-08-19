@@ -1,10 +1,10 @@
-HTTP CLIENT_CERT Authentication Example
+Authentication using a JPA/JDBC Identity Store
 ===================
 
 What is it?
 -----------
 
-This example demonstrates how to enable HTTP CLIENT_CERT Authentication in web applications.
+This example demonstrates how to use the JPA/JDBC Authentication Manager to validate users credentials using a database.
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 

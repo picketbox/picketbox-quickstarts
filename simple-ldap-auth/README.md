@@ -1,10 +1,10 @@
-HTTP CLIENT_CERT Authentication Example
+Authentication using a LDAP Identity Store
 ===================
 
 What is it?
 -----------
 
-This example demonstrates how to enable HTTP CLIENT_CERT Authentication in web applications.
+This example demonstrates how to use the LDAP Authentication Manager to validate users credentials using a LDAP server.
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 
