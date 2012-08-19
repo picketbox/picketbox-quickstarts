@@ -47,5 +47,3 @@ The application will be running at the following URL http://localhost:8080/${art
 To undeploy run this command:
 
 	mvn jboss-as:undeploy
-
-You can also start the JBoss container and deploy the project using JBoss Tools. See the Getting Started Developing Applications Guide for more information.
