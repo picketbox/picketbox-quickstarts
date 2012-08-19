@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/pages/common/layout/mainLayout.xhtml">
+	<ui:define name="body">
+
+		<h1>#{messages.text_application_name}</h1>
+
+		<rich:panel>
+			<h:panelGrid columns="1">
+				<div styleClass="info">
+					Welcome !
+                </div>
+			</h:panelGrid>
+		</rich:panel>
+
+	</ui:define>
+
+</ui:composition>
