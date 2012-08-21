@@ -1,0 +1,1 @@
+All users are managers. Try to access the <a href="confidentialResource.jsp">/confidentialResource</a>, you should receive a 403 status response.

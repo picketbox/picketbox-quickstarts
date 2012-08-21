@@ -23,6 +23,7 @@
 		<module>simple-jpa-auth</module>
 		<module>solder-integration</module>
 		<module>drools-authorization</module>
+		<module>http-configuration-api</module>
 		<module>ldap-idm</module>
 	</modules>
 </project>
