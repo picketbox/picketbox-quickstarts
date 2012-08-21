@@ -39,6 +39,12 @@
 			<version>1.0.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>static-web-resources</artifactId>
+			<version>${picketbox.core.version}</version>
+			<type>war</type>
+		</dependency>
 	</dependencies>
 	
 	<build>
