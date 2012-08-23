@@ -38,4 +38,8 @@
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<url-pattern>/picketbox_logout</url-pattern>
 	</filter-mapping>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/accessDenied.jsp</location>
+	</error-page>
 </web-app>
