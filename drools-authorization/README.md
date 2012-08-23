@@ -10,6 +10,8 @@ The example can be deployed using Maven from the command line or from Eclipse us
 
 It provides a simple authorization example based on two user accounts: admin/admin and guest/guest. Admin users should be able to login, but guest users should receive a 403 status response. 
 
+To authenticate users is used a properties file located at */src/main/resources/users.properties*.
+
 System requirements
 -----------
 
