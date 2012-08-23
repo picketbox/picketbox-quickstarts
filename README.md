@@ -11,7 +11,9 @@ Deploying the quickstarts
 
 ### Deploying locally
 
-First you need to start the JBoss container. To do this, run
+Change to the directory of the quickstart that you want to deploy.
+
+Start the JBoss container. To do this, run
 
 	$JBOSS_HOME/bin/standalone.sh
 

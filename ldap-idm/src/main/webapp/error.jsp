@@ -23,13 +23,12 @@
 
 <html>
 <head>
-<title>Welcome to JBoss Application Server 7</title>
-<link rel="StyleSheet" href="resources/css/picketbox.css" type="text/css">
+<title>PicketBox Quickstarts: PicketBox LDAP Identity Manager Example</title>
+<link rel="StyleSheet" href="<%= request.getContextPath() %>/resources/css/idp.css" type="text/css">
 </head>
 
 <body>
-	<img src="resources/images/picketlink-banner-1180px.png"
-		style="margin-top: -10px; margin-left: -10px; opacity: 0.4; filter: alpha(opacity = 40);" />
+	<img src="<%= request.getContextPath() %>/resources/images/picketbox-banner-1180px.png" class="picketboxBanner"/>
 	<div class="loginBox"
 		style="margin-bottom: 80px; border: 1px solid #000000; width: 310px; background-color: #F8F8F8; align: center;">
 		<form id="login_form" name="login_form" method="post"

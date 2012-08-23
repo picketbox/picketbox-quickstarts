@@ -23,7 +23,7 @@
 
 <html>
 <head>
-<title>Welcome to JBoss Application Server 7</title>
+<title>PicketBox Quickstarts: PicketBox JPA Authentication Example</title>
 <link rel="StyleSheet" href="resources/css/picketbox.css" type="text/css">
 </head>
 

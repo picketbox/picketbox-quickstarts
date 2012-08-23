@@ -31,6 +31,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.servlet.ServletContext;
 
+import org.jboss.solder.servlet.event.Destroyed;
 import org.jboss.solder.servlet.event.Initialized;
 
 /**
@@ -42,9 +43,11 @@ import org.jboss.solder.servlet.event.Initialized;
 @ApplicationScoped
 public class DatabaseInitializer {
 
+    private EntityManagerFactory factory;
+
     public void contextInitialized(@Observes @Initialized ServletContext servletContext) {
         try {
-            EntityManagerFactory factory = (EntityManagerFactory) new InitialContext().lookup("java:/AuthTestEMF");
+            this.factory = (EntityManagerFactory) new InitialContext().lookup("java:/AuthTestEMF");
             EntityManager entityManager = factory.createEntityManager();
             
             entityManager.getTransaction().begin();
@@ -63,6 +66,10 @@ public class DatabaseInitializer {
         } catch (NamingException e) {
             throw new IllegalStateException("Error initializing database.", e);
         }
+    }
+    
+    public void contextDestroyed(@Observes @Destroyed ServletContext servletContext) {
+        this.factory.close();
     }
 
 }
