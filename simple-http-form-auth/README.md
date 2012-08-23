@@ -8,6 +8,8 @@ This example demonstrates how to enable HTTP FORM Authentication in web applicat
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 
+To authenticate users is used a properties file located at */src/main/resources/users.properties*.
+
 System requirements
 -----------
 

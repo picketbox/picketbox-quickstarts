@@ -8,6 +8,8 @@ This example demonstrates how to use the JPA/JDBC Authentication Manager to vali
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 
+To login, please use: admin/admin. You can check the org.picketbox.quickstarts.authentication.jpa.DatabaseInitializer for more information about how users are populated.
+
 System requirements
 -----------
 

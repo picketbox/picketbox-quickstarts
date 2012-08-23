@@ -8,6 +8,8 @@ This example demonstrates how to enable HTTP DIGEST Authentication in web applic
 
 The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
 
+To authenticate users is used a properties file located at */src/main/resources/users.properties*.
+
 System requirements
 -----------
 
