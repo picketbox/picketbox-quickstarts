@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>picketbox-quickstarts-parent</artifactId>
 		<groupId>org.picketbox</groupId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.0.0-2012Aug24</version>
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>simple-jpa-auth</artifactId>
@@ -15,7 +15,7 @@
 	<description>This example application demonstrates how to use HTTP FORM using an LDAP Identity Store.</description>
 	<properties>
 		<richfaces.version>4.0.0.Final</richfaces.version>
-		<picketbox.solder.version>5.0.0-SNAPSHOT</picketbox.solder.version>
+		<picketbox.solder.version>5.0.0-2012Aug24</picketbox.solder.version>
 	</properties>
 	<dependencies>
 		<!-- Richfaces Dependencies -->
