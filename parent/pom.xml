@@ -19,6 +19,11 @@
 		<name>JBoss Inc.</name>
 		<url>http://www.jboss.org</url>
 	</organization>
+	<scm>
+		<connection>scm:git:https://github.com/picketbox/picketbox-quickstarts</connection>
+		<developerConnection>scm:git:git@github.com:picketbox/picketbox-quickstarts</developerConnection>
+		<url>${jboss.as.scm.url}</url>
+	</scm>
 	<developers>
 		<developer>
 			<id>jboss.org</id>

@@ -26,5 +26,6 @@
 		<module>drools-authorization</module>
 		<module>http-configuration-api</module>
 		<module>ldap-idm</module>
+		<module>dist</module>
 	</modules>
 </project>
