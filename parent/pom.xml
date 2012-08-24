@@ -19,6 +19,26 @@
 		<name>JBoss Inc.</name>
 		<url>http://www.jboss.org</url>
 	</organization>
+	<developers>
+		<developer>
+			<id>jboss.org</id>
+			<name>JBoss.org Developers</name>
+			<organization>JBoss.org</organization>
+			<organizationUrl>http://www.jboss.org</organizationUrl>
+		</developer>
+	</developers>
+	<distributionManagement>
+		<repository>
+			<id>jboss-releases-repository</id>
+			<name>JBoss Releases Repository</name>
+			<url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>jboss-snapshots-repository</id>
+			<name>JBoss Snapshots Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<properties>
 		<picketbox.core.version>5.0.0-2012Aug24</picketbox.core.version>
 	</properties>
@@ -39,50 +59,77 @@
 			<version>1.0.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.picketbox</groupId>
-			<artifactId>static-web-resources</artifactId>
-			<version>${picketbox.core.version}</version>
-			<type>war</type>
-		</dependency>
 	</dependencies>
-	
 	<build>
-        <!-- Set the name of the war, used as the context root when the app
-      is deployed -->
-      <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <!-- JBoss AS plugin to deploy war -->
-            <plugin>
-                <groupId>org.jboss.as.plugins</groupId>
-                <artifactId>jboss-as-maven-plugin</artifactId>
-                <version>7.1.1.Final</version>
-            </plugin>
-            <!-- Compiler plugin enforces Java 1.6 compatibility and activates
-          annotation processors -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <version>1.9.0</version>
-                <configuration>
-                    <header>src/etc/license.txt</header>
-                    <includes>
-                        <include>src/**</include>
-                    </includes>
-                    <strictCheck>true</strictCheck>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-</project>
+		<!-- Set the name of the war, used as the context root when the app is 
+			deployed -->
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<!-- JBoss AS plugin to deploy war -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.1.1.Final</version>
+			</plugin>
+			<!-- Compiler plugin enforces Java 1.6 compatibility and activates annotation 
+				processors -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<version>1.9.0</version>
+				<configuration>
+					<header>src/etc/license.txt</header>
+					<includes>
+						<include>src/**</include>
+					</includes>
+					<strictCheck>true</strictCheck>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>repository.jboss.org</id>
+			<name>JBoss Repository</name>
+			<layout>default</layout>
+			<url>http://repository.jboss.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>snapshots.jboss.org</id>
+			<name>JBoss Snapshots Repository</name>
+			<layout>default</layout>
+			<url>http://snapshots.jboss.org/maven2/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
 </project>

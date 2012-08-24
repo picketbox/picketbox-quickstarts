@@ -13,4 +13,12 @@
 	<packaging>war</packaging>
 	<name>PicketBox HTTP Basic Authentication Example</name>
 	<description>This example application demonstrates how to use HTTP Basic authentication.</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>static-web-resources</artifactId>
+			<version>${picketbox.core.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
 </project>

@@ -19,5 +19,11 @@
 			<artifactId>picketbox-drools</artifactId>
 			<version>5.0.0-2012Aug24</version>
 		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>static-web-resources</artifactId>
+			<version>${picketbox.core.version}</version>
+			<type>war</type>
+		</dependency>
 	</dependencies>
 </project>
