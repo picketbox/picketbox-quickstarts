@@ -13,4 +13,12 @@
 	<packaging>war</packaging>
 	<name>PicketBox HTTP Configuration API Example</name>
 	<description>This example application demonstrates how to use Configuration API to configure PicketBox HTTP.</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>static-web-resources</artifactId>
+			<version>${picketbox.core.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
 </project>
