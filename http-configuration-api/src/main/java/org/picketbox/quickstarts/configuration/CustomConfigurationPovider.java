@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import org.picketbox.core.identity.impl.ConfiguredRolesIdentityManager;
+import org.picketbox.core.identity.impl.ConfiguredRolesSubjectPopulator;
 import org.picketbox.http.config.ConfigurationBuilderProvider;
 import org.picketbox.http.config.HTTPConfigurationBuilder;
 import org.picketbox.http.resource.ProtectedResourceConstraint;
@@ -52,9 +52,7 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
         HTTPConfigurationBuilder configurationBuilder = new HTTPConfigurationBuilder();
         
         configurationBuilder
-            .authentication()
-                .propertiesFileBased()
-            .identityManager().manager(new ConfiguredRolesIdentityManager(getCommonRoles()));
+            .identityManager().userPopulator(new ConfiguredRolesSubjectPopulator(getCommonRoles()));
             
         configurationBuilder
             // configure the protected resources. Note that the /confidentialResource will be unavailable for all users because they have only the "manager" role.
