@@ -1,223 +1,162 @@
-html {
-	overflow-y: scroll;
-}
-
-body {
-	font-size: 12px;
-	margin: 0px;
-}
-
-a img {
-	border: none;
-}
-
-h1 {
-	font-size: 1.6em;
-	margin-top: 0;
-}
-
-input[type=submit], input[type=button] {
-	font-size: 11px;
-	margin: 5px 5px 5px 0;
-	cursor: pointer;
-}
-
-input[type=text], input[type=password], textarea {
-	font-size: 12px;
-	padding-left: 1px;
-	height: 10px;
-}
-
-select {
-	font-size: 13px;
-}
-
-.tableControl, .actionButtons {
-	width: 100%;
-}
-
-.tableControl a {
-	padding-left: 10px;
-}
-
-.tableControl {
-	text-align: right;
-}
-
-.footer {
-	text-align: center;
-	font-size: 11px;
-	margin-bottom: 10px;
-}
-
-.rich-table {
-	width: 100%;
-}
-
-.body {
-	padding: 10px;
-}
-.message {
-	padding: 5px;
-	list-style: none;
-	border: 0;
-	background: none;
-	padding: 0;
-	color: #000000;
-	margin: 5px 0 8px 0;
-	font-size: 12px;
-}
-
-.message li {
-	background: no-repeat left center;
-	padding-top: 1px;
-	padding-left: 20px;
-	margin-left: 3px;
-}
-
-.message li.infomsg {
-	background-image: url(../img/msginfo.png);
-}
-
-.message li.errormsg {
-	background-image: url(../img/msgerror.png);
-}
-
-.message li.warnmsg {
-	background-image: url(../img/msgwarn.png);
-}
-
-.name {
-	vertical-align: top;
-	font-weight: bold;
-	width: 115px;
-	float: left;
-	padding: 5px;
-	margin-top: 3px;
-	clear: left;
-}
-
-.value {
-	float: left;
-	padding: 5px;
-}
-
-.error {
-	float: left;
-	padding: 5px;
-}
-
-.errors {
-	color: #FF0000;
-	vertical-align: middle;
-}
-
-img.errors {
-	padding-right: 5px;
-}
-
-.errors input, .errors textarea, .errors select {
-	border: 1px solid red !important;
-}
-
-.required {
-	color: #FF0000;
-	padding-left: 2px;
-}
-
-.rich-stglpanel-body {
-	overflow: auto;
-} 
-
-/* the specificity here is necessary to override the defaults */
 /*
-.rich-panel .rich-panel-header,
-.rich-stglpanel .rich-stglpanel-header {
-	padding: 2px 3px;
-}*/
-
-.rich-panel input[type=submit], .rich-panel input[type=button],
-.rich-tabpanel input[type=submit], .rich-tabpanel input[type=button] {
-	margin-bottom: 0;
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright (c) 2011, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+*/
+body {
+	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll 0 0 #F3F3F3;
+	font: 12px/1.4 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-.tableControl input[type=submit], .tableControl input[type=button], .tableControl select {
-	margin: 5px 0 5px 5px;
+#loginBody {
+	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll 0 0 #F3F3F3;
+	color: #555555;
 }
 
-/* I don't know why this is necessary, but the select is off by a pixel on the top and is padding too much on the left */
-.tableControl select {
-	margin-left: 2px;
+.loginBox {
+	background: url(../images/picketbox_icon_256x.png) no-repeat scroll 0 0
+		#F3F3F3;
+	background-size: 50%;
+	background-position: 80px 10px;
 	position: relative;
-	top: 1px;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 300px;
+	margin-top: -15em; /*set to a negative number 1/2 of your height*/
+	margin-left: -15em; /*set to a negative number 1/2 of your width*/
+	border: 1px solid #FFFFFF;
+	background-color: #E0E0E0;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	position: absolute;
 }
 
-.actionButtons {
-	padding-left: 1px;
+#loginBoxContent {
+	position: relative;
+	margin-top: 180px;
+	margin-left: 15px;
+	z-index: 100;
 }
 
-.actionButtons select {
-	margin: 5px 5px 5px 0;
-	vertical-align: bottom;
+#loginBtnContainer {
+	margin-top: -49px;
+	margin-left: 235px;
 }
 
-.rich-toolbar-item a {
-	text-decoration: none;
+.loginBtn {
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 50px;
+	height: 35px;
 }
 
-.rich-toolbar-item a:hover, .rich-ddmenu-label-select {
-	text-decoration: underline;
+.loginBtn2 {
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 100px;
+	height: 35px;
 }
 
-.rich-toolbar-item .rich-menu-item a:hover {
-	text-decoration: none;
+#footerContainer {
+	height: 98%;
+	position: relative;
 }
 
-.rich-datalist {
-	list-style: square;
-	margin: 6px 0 1px 0;
-	padding-left: 18px;
-}
-
-.rich-list-item {
-	padding-bottom: 4px;
-}
-
-div.info {
-	font-size: 1.2em;
-}
-
-ul.bullets {
-	list-style: square;
-}
-
-ul.bullets li {
-	padding-bottom: 2px;
-}
-
-td.action {
+#footerContent {
+	width: 100%;
+	height: 10%;
+	position: absolute;
+	bottom: 0px;
 	text-align: center;
-	width: 8em;
-	white-space: nowrap;
 }
 
-td.action a {
-	padding-left: 1px;
-	padding-right: 1px;
+#footerContainer a {
+	color: #686868;
 }
 
-table.radio {
-   border: 0;
+.defaultBoxContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 300px;
+	margin-top: -20em; /*set to a negative number 1/2 of your height*/
+	margin-left: -15em; /*set to a negative number 1/2 of your width*/
+	border: 1px solid #FFFFFF;
+	background-color: #E0E0E0;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	padding-left: 10px;
+	z-index: 999;
 }
 
-table.radio td {
-   padding: 0 2px;
+input[type='text']::-webkit-input-placeholder {
+	color: #999;
 }
 
-table.radio input[type=radio] {
-   vertical-align: bottom;
+input[type='text']:-moz-placeholder {
+	color: #999;
 }
 
-h1 {
-	font-family: Arial,Verdana,sans-serif;
+input[type='text']:-ms-input-placeholder {
+	color: #999;
+}
+
+input[type='password']::-webkit-input-placeholder {
+	color: #999;
+}
+
+input[type='password']:-moz-placeholder {
+	color: #999;
+}
+
+input[type='password']:-ms-input-placeholder {
+	color: #999;
+}
+
+input[type='text'] {
+	height: 40px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+input[type='password'] {
+	height: 40px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }

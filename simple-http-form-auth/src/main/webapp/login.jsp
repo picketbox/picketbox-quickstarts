@@ -20,36 +20,50 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <html>
 <head>
 <title>PicketBox Quickstarts: PicketBox Http Form Example</title>
-<link rel="StyleSheet" href="resources/css/idp.css" type="text/css">
+<link rel="StyleSheet" href="resources/css/theme.css" type="text/css">
 </head>
-<body>
-	<img src="resources/images/picketbox-banner-1180px.png" class="picketboxBanner"/>
-	<div class="loginBox">
-		<form id="login_form" name="login_form" method="post"
-			action="j_security_check" enctype="application/x-www-form-urlencoded">
+<body id="loginBody">
+	<div id="introDiv" class="loginBox">
+		<div id="loginBoxContent">
 			<center>
-				<p>
-					Welcome to the <b>PicketBox Quickstarts</b>
-				</p>
-				<p>Please login to proceed.</p>
+				<h2>PicketBox Quickstart</h2>
 			</center>
+			<center>
+				<input class="loginBtn2" type="button" value="Login" onclick="document.getElementById('loginDiv').style.display = '';document.getElementById('introDiv').style.display = 'none'" />&nbsp;&nbsp;&nbsp;&nbsp;<input
+					class="loginBtn2" type="button" value="Sign Up"
+					onclick="window.location='signup.jsp'" />
+			</center>
+		</div>
+	</div>
+	<div id="loginDiv" class="loginBox" style="display: none;">
+		<div id="loginBoxContent">
+			<form id="login_form" name="login_form" method="post"
+				action="j_security_check"
+				enctype="application/x-www-form-urlencoded">
 
-			<div style="margin-left: 15px;">
 				<p>
-					<label for="username"> Username</label><br /> <input id="username"
-						type="text" name="j_username" size="20" /> (ex: admin)
+					<input id="username" type="text" name="j_username" size="30"
+						placeholder="User ID" />
 				</p>
 				<p>
-					<label for="password"> Password</label><br /> <input id="password"
-						type="password" name="j_password" value="" size="20" /> (ex: admin)
+					<input id="password" type="password" name="j_password" value=""
+						size="30" placeholder="Password" />
+				<div id="loginBtnContainer">
+					<input class="loginBtn" type="submit" name="submit" value="Login" />
+				</div>
 				</p>
-				<input id="submit" type="submit" name="submit" value="Login" class="buttonmed" />
-			</div>
-		</form>
+			</form>
+		</div>
+	</div>
+	<div id="footerContainer">
+		<div id="footerContent">
+			<span><a href="http://jboss.org/picketbox">PicketBox at
+					JBoss.Org</a> | <a
+				href="https://docs.jboss.org/author/display/SECURITY">Help</a></span>
+		</div>
 	</div>
 </body>
 </html>

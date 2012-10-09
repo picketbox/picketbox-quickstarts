@@ -19,18 +19,68 @@
   ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
+<%@page import="org.picketbox.core.UserContext"%>
+<%@page import="org.picketbox.http.wrappers.RequestWrapper"%>
+<%@page import="org.picketlink.idm.model.Role"%>
+<%
+    RequestWrapper requestWrapper = (RequestWrapper) request;
+    UserContext userContext = requestWrapper.getUserContext();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <html>
 <head>
 <title>PicketBox Quickstarts: PicketBox Http Form Example</title>
-<link rel="StyleSheet" href="resources/css/idp.css" type="text/css">
+<link rel="StyleSheet" href="resources/css/theme.css" type="text/css">
 </head>
 <body>
-  	<img src="resources/images/picketbox-banner-1180px.png" class="picketboxBanner"/>
-	<div style="align: center;">
-		<p>Welcome. You are now authenticated.</p> 
-		<p>You can also try to <a href="picketbox_logout">logout</a>.</p>
+	<div class="defaultBoxContainer">
+		<h2>
+			<p>
+				Welcome <span style="color: green"><%=request.getUserPrincipal().getName()%></span>!
+			</p>
+		</h2>
+		<center>
+			<p>You are now logged in.</p>
+		</center>
+		<h2>
+			<p>Your Information:</p>
+		</h2>
+		<div style="">
+			<p>
+				<b>First Name:</b>
+				<%=userContext.getUser().getFirstName()%>
+			</p>
+			<p>
+				<b>Last Name:</b>
+				<%=userContext.getUser().getLastName()%>
+			</p>
+			<p>
+				<b>E-mail:</b>
+				<%=userContext.getUser().getEmail()%>
+			</p>
+			<p>
+				<b>Roles:</b>
+				<% 
+					for (Role role: userContext.getRoles()) {
+    			%>
+    					<%= role.getName() %>
+    			<% 
+					} 
+				%>
+			</p>
+		</div>
+		<h2>
+			<p>
+				<center>Click here to <a href="picketbox_logout">Logout</a>.</center>
+			</p>
+		</h2>
+	</div>
+	<div id="footerContainer">
+		<div id="footerContent">
+			<span><a href="http://jboss.org/picketbox">PicketBox at
+					JBoss.Org</a> | <a
+				href="https://docs.jboss.org/author/display/SECURITY">Help</a></span>
+		</div>
 	</div>
 </body>
 </html>
