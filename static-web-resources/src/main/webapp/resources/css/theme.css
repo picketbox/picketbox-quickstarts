@@ -20,20 +20,23 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 */
 body {
-	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll 0 0 #F3F3F3;
+	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll
+		0 0 #F3F3F3;
 	font: 12px/1.4 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #loginBody {
-	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll 0 0 #F3F3F3;
+	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll
+		0 0 #F3F3F3;
 	color: #555555;
+	
 }
 
 .loginBox {
 	background: url(../images/picketbox_icon_256x.png) no-repeat scroll 0 0
 		#F3F3F3;
-	background-size: 50%;
-	background-position: 80px 10px;
+	background-size: 40%;
+	background-position: 92px 10px;
 	position: relative;
 	top: 50%;
 	left: 50%;
@@ -43,9 +46,9 @@ body {
 	margin-left: -15em; /*set to a negative number 1/2 of your width*/
 	border: 1px solid #FFFFFF;
 	background-color: #E0E0E0;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	-moz-border-radius: 15px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
 	position: absolute;
 }
 
@@ -57,30 +60,34 @@ body {
 }
 
 #loginBtnContainer {
-	margin-top: -49px;
-	margin-left: 235px;
+	margin-top: -50px;
+	margin-left: 208px;
 }
 
 .loginBtn {
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 	font-weight: normal;
-	color: black;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	width: 50px;
+	width: 80px;
 	height: 35px;
+	font: bold 130%/120% "Lucida Grande", Arial, sans-serif;
+	position: relative;
+	margin: 0;
+	color: #404040;
+	letter-spacing: 0px
 }
 
 .loginBtn2 {
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 	font-weight: normal;
-	color: black;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 	width: 100px;
 	height: 35px;
+	font: bold 130%/120% "Lucida Grande", Arial, sans-serif;
+	position: relative;
+	margin: 0;
+	color: #404040;
+	letter-spacing: 0px
 }
 
 #footerContainer {
@@ -100,6 +107,22 @@ body {
 	color: #686868;
 }
 
+.footerContentLeft {
+	float: left;
+	padding-left: 10px;
+}
+
+.footerContentRight {
+	float: right;
+	padding-right: 10px;
+}
+
+.footerContentSeparator {
+	color: #D8D8D8;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 .defaultBoxContainer {
 	position: absolute;
 	top: 50%;
@@ -110,9 +133,9 @@ body {
 	margin-left: -15em; /*set to a negative number 1/2 of your width*/
 	border: 1px solid #FFFFFF;
 	background-color: #E0E0E0;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	-moz-border-radius: 15px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
 	padding-left: 10px;
 	z-index: 999;
 }
@@ -143,6 +166,7 @@ input[type='password']:-ms-input-placeholder {
 
 input[type='text'] {
 	height: 40px;
+	width: 95%;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 17px;
 	font-weight: normal;
@@ -153,10 +177,18 @@ input[type='text'] {
 
 input[type='password'] {
 	height: 40px;
+	width: 95%;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 17px;
 	font-weight: normal;
 	color: black;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+label {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	color: black;
 }

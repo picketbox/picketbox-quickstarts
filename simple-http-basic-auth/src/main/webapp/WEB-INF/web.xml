@@ -6,22 +6,27 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID"
 	version="3.0">
-	<display-name>auth-simple-jee</display-name>
+	<!-- Configures BASIC authentication scheme -->
 	<context-param>
 		<param-name>org.picketbox.authentication</param-name>
 		<param-value>BASIC</param-value>
 	</context-param>
+	<!-- Custom ConfigurationBuilderProvider to provide a custom configuration using the Configuration API. -->
 	<context-param>
-		<param-name>org.picketbox.authentication.manager</param-name>
-		<param-value>Properties</param-value>
+		<param-name>org.picketbox.configuration.provider</param-name>
+		<param-value>org.picketbox.quickstarts.configuration.CustomConfigurationPovider</param-value>
 	</context-param>
+	<!-- Configures the PicketBox Security Filter -->
 	<filter>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<filter-class>org.picketbox.http.filters.DelegatingSecurityFilter</filter-class>
 	</filter>
-	<!-- Protected Resources -->
+	<!-- Configures all resources as protected by the PicketBox Security Filter -->
 	<filter-mapping>
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>/login.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

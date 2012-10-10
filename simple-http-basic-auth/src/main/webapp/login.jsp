@@ -19,68 +19,47 @@
   ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
-<%@page import="org.picketbox.core.UserContext"%>
-<%@page import="org.picketbox.http.wrappers.RequestWrapper"%>
-<%@page import="org.picketlink.idm.model.Role"%>
-<%
-    RequestWrapper requestWrapper = (RequestWrapper) request;
-    UserContext userContext = requestWrapper.getUserContext();
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>PicketBox Quickstarts: PicketBox Http Form Example</title>
 <link rel="StyleSheet" href="resources/css/theme.css" type="text/css">
 </head>
-<body>
-	<div class="defaultBoxContainer">
-		<h2>
+<body id="loginBody">
+	<div id="introDiv" class="loginBox">
+		<div id="loginBoxContent">
+			<center>
+				<h2 style="margin-top: -25px;">PicketBox Quickstart</h2>
+			</center>
 			<p>
-				Welcome <span style="color: green"><%=request.getUserPrincipal().getName()%></span>!
+				To get started, first create an user account by clicking on the <b>Register</b>
+				button bellow. After that try to <b>Sign In</b> using your credentials.
 			</p>
-		</h2>
-		<center>
-			<p>You are now logged in.</p>
-		</center>
-		<h2>
-			<p>Your Information:</p>
-		</h2>
-		<div style="">
-			<p>
-				<b>First Name:</b>
-				<%=userContext.getUser().getFirstName()%>
-			</p>
-			<p>
-				<b>Last Name:</b>
-				<%=userContext.getUser().getLastName()%>
-			</p>
-			<p>
-				<b>E-mail:</b>
-				<%=userContext.getUser().getEmail()%>
-			</p>
-			<p>
-				<b>Roles:</b>
-				<% 
-					for (Role role: userContext.getRoles()) {
-    			%>
-    					<%= role.getName() %>
-    			<% 
-					} 
-				%>
-			</p>
+			<center>
+				<input id="siginBtn" class="loginBtn2" type="button" value="Sign In"
+					onclick="window.location='index.jsp'" />&nbsp;&nbsp;&nbsp;&nbsp;<input
+					class="loginBtn2" type="button" value="Register"
+					onclick="window.location='signup.jsp'" />
+			</center>
 		</div>
-		<h2>
-			<p>
-				<center>Click here to <a href="picketbox_logout">Logout</a>.</center>
-			</p>
-		</h2>
 	</div>
 	<div id="footerContainer">
 		<div id="footerContent">
-			<span><a href="http://jboss.org/picketbox">PicketBox at
-					JBoss.Org</a> | <a
-				href="https://docs.jboss.org/author/display/SECURITY">Help</a></span>
+			<span class="footerContentLeft"><a
+				href="http://jboss.org/picketbox">PicketBox at JBoss.Org</a><span
+				class="footerContentSeparator">|</span><a
+				href="http://github.com/picketbox">Follow us on Github</a><span
+				class="footerContentSeparator">|</span><a
+				href="https://docs.jboss.org/author/display/SECURITY">Documentation</a></span>
 		</div>
 	</div>
 </body>
 </html>
+<% 
+	if (request.getParameter("error") != null || request.getParameter("signin") != null) {
+%>
+	<script>document.getElementById('siginBtn').click();</script>
+<%
+    
+	}
+%>

@@ -26,7 +26,7 @@
 <link rel="StyleSheet" href="resources/css/theme.css" type="text/css">
 </head>
 <body>
-	<div class="defaultBoxContainer" style="height: 480px;width: 400px;">
+	<div class="defaultBoxContainer" style="height: 500px;width: 400px;">
 		<h2>
 			<p>
 				Your Information: <span style="font-size: 13px;color: red;">
@@ -68,6 +68,7 @@
 				<p>
 				<center>
 					<input class="loginBtn2" type="submit" value="Finish" />
+					<input class="loginBtn2" type="button" value="Back" onclick="window.location='<%= request.getContextPath() %>'"/>
 				</center>
 				</p>
 			</form>
@@ -76,9 +77,12 @@
 	<br/><br/><br/>
 	<div id="footerContainer">
 		<div id="footerContent">
-			<span><a href="http://jboss.org/picketbox">PicketBox at
-					JBoss.Org</a> | <a
-				href="https://docs.jboss.org/author/display/SECURITY">Help</a></span>
+			<span class="footerContentLeft"><a
+				href="http://jboss.org/picketbox">PicketBox at JBoss.Org</a><span
+				class="footerContentSeparator">|</span><a
+				href="http://github.com/picketbox">Follow us on Github</a><span
+				class="footerContentSeparator">|</span><a
+				href="https://docs.jboss.org/author/display/SECURITY">Documentation</a></span>
 		</div>
 	</div>
 </body>

@@ -24,6 +24,8 @@ package org.picketbox.http.quickstarts.idm;
 
 import java.io.IOException;
 
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,11 +39,17 @@ import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.User;
 
 /**
+ * <p>
+ * Simple {@link Servlet} that uses the configured {@link IdentityManager} to create/register new users.
+ * </p>
+ * 
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
- *
+ * 
  */
-@WebServlet (urlPatterns={"/signup"})
+@WebServlet(urlPatterns = { "/signup" })
 public class SignUpServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 7251985700185294184L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,40 +59,54 @@ public class SignUpServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
-        
+
         IdentityManager identityManager = getIdentityManager(req);
-        
+
+        // if user already exists
         if (identityManager.getUser(userId) != null) {
             req.getSession().setAttribute("message", "User ID already in use.");
             req.getRequestDispatcher("/signup.jsp").forward(req, resp);
             return;
         }
-        
+
         if (!password.equals(confirmPassword)) {
             req.getSession().setAttribute("message", "Password mismatch.");
             req.getRequestDispatcher("/signup.jsp").forward(req, resp);
             return;
         }
-        
+
+        // create the user
         User user = identityManager.createUser(userId);
-        
+
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
-        
+
+        // updates user's password
         identityManager.updatePassword(user, password);
-        
+
         Role guestRole = identityManager.createRole("guest");
-        
+
+        // grant role guest to this user
         identityManager.grantRole(guestRole, user, null);
-        
-        resp.sendRedirect("login.jsp");
+
+        resp.sendRedirect("login.jsp?signin=true");
     }
 
+    /**
+     * <p>
+     * Retrieve the {@link PicketBoxManager} instance from the {@link ServletContext} and get the configured
+     * {@link IdentityManager}.
+     * </p>
+     * 
+     * @param req
+     * @return
+     */
     private IdentityManager getIdentityManager(HttpServletRequest req) {
-        PicketBoxManager picketBoxManager = (PicketBoxManager) req.getServletContext().getAttribute(PicketBoxConstants.PICKETBOX_MANAGER);
+        PicketBoxManager picketBoxManager = (PicketBoxManager) req.getServletContext().getAttribute(
+                PicketBoxConstants.PICKETBOX_MANAGER);
         IdentityManager identityManager = picketBoxManager.getIdentityManager();
         return identityManager;
     }
-    
+
 }

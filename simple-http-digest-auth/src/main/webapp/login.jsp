@@ -29,41 +29,37 @@
 	<div id="introDiv" class="loginBox">
 		<div id="loginBoxContent">
 			<center>
-				<h2>PicketBox Quickstart</h2>
+				<h2 style="margin-top: -25px;">PicketBox Quickstart</h2>
 			</center>
+			<p>
+				To get started, first create an user account by clicking on the <b>Register</b>
+				button bellow. After that try to <b>Sign In</b> using your credentials.
+			</p>
 			<center>
-				<input class="loginBtn2" type="button" value="Login" onclick="document.getElementById('loginDiv').style.display = '';document.getElementById('introDiv').style.display = 'none'" />&nbsp;&nbsp;&nbsp;&nbsp;<input
-					class="loginBtn2" type="button" value="Sign Up"
+				<input id="siginBtn" class="loginBtn2" type="button" value="Sign In"
+					onclick="window.location='index.jsp'" />&nbsp;&nbsp;&nbsp;&nbsp;<input
+					class="loginBtn2" type="button" value="Register"
 					onclick="window.location='signup.jsp'" />
 			</center>
 		</div>
 	</div>
-	<div id="loginDiv" class="loginBox" style="display: none;">
-		<div id="loginBoxContent">
-			<form id="login_form" name="login_form" method="post"
-				action="j_security_check"
-				enctype="application/x-www-form-urlencoded">
-
-				<p>
-					<input id="username" type="text" name="j_username" size="30"
-						placeholder="User ID" />
-				</p>
-				<p>
-					<input id="password" type="password" name="j_password" value=""
-						size="30" placeholder="Password" />
-				<div id="loginBtnContainer">
-					<input class="loginBtn" type="submit" name="submit" value="Login" />
-				</div>
-				</p>
-			</form>
-		</div>
-	</div>
 	<div id="footerContainer">
 		<div id="footerContent">
-			<span><a href="http://jboss.org/picketbox">PicketBox at
-					JBoss.Org</a> | <a
-				href="https://docs.jboss.org/author/display/SECURITY">Help</a></span>
+			<span class="footerContentLeft"><a
+				href="http://jboss.org/picketbox">PicketBox at JBoss.Org</a><span
+				class="footerContentSeparator">|</span><a
+				href="http://github.com/picketbox">Follow us on Github</a><span
+				class="footerContentSeparator">|</span><a
+				href="https://docs.jboss.org/author/display/SECURITY">Documentation</a></span>
 		</div>
 	</div>
 </body>
 </html>
+<% 
+	if (request.getParameter("error") != null || request.getParameter("signin") != null) {
+%>
+	<script>document.getElementById('siginBtn').click();</script>
+<%
+    
+	}
+%>

@@ -15,6 +15,7 @@
 	<description>PicketBox Quickstarts provides a lot of useful examples using the PicketBox project</description>
 	<modules>
 		<module>static-web-resources</module>
+		<module>common</module>
 		<module>parent</module>
 		<module>simple-http-basic-auth</module>
 		<module>simple-http-form-auth</module>
