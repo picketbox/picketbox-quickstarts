@@ -42,6 +42,8 @@ And a simple filter to propagate the JPA EntityManager and make it available to 
 		<filter-class>org.picketbox.quickstarts.filter.EntityManagerPropagationFilter</filter-class>
 	</filter>
 	
+The filter above is not required by PicketBox. Usually you would use some framework that already provide such capabilities.  
+	
 All the PicketBox configuration is done *with org.picketbox.quickstarts.configuration.CustomConfigurationPovider*. Like which resources should be protected, how they should be protected, etc.
 
 Deploy and access the quickstart

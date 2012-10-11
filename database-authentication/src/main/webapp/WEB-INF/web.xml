@@ -8,7 +8,8 @@
 		<param-name>org.picketbox.authentication</param-name>
 		<param-value>FORM</param-value>
 	</context-param>
-	<!-- Custom ConfigurationBuilderProvider to provide a custom configuration using the Configuration API. -->
+	<!-- Custom ConfigurationBuilderProvider to provide a custom configuration 
+		using the Configuration API. -->
 	<context-param>
 		<param-name>org.picketbox.configuration.provider</param-name>
 		<param-value>org.picketbox.quickstarts.configuration.CustomConfigurationPovider</param-value>
@@ -18,6 +19,9 @@
 		<filter-name>PicketBox Delegating Filter</filter-name>
 		<filter-class>org.picketbox.http.filters.DelegatingSecurityFilter</filter-class>
 	</filter>
+	<!-- Configures the a filter to propagate the EntityManager and make it 
+		available to PicketBox. This is NOT a PicketBox requirement, usually you 
+		would use some framework that already provides such thing. -->
 	<filter>
 		<filter-name>EntityManager Propagation Filter</filter-name>
 		<filter-class>org.picketbox.quickstarts.filter.EntityManagerPropagationFilter</filter-class>
