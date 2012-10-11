@@ -44,7 +44,6 @@ To run these quickstarts with the provided build scripts, you need the following
             mvn --version 
 
 3. The JBoss AS 7 distribution ZIP.
-    * For information on how to install and run JBoss, refer to the documentation.
 
 4. An HTML5 compatible browser such as Chrome, Safari 5+, Firefox 5+, or IE 9+ are recommended.
 
