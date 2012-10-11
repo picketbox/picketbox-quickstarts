@@ -36,3 +36,12 @@ And the PicketBox Security filter definition
 	</filter-mapping>
 
 All the PicketBox configuration is done with org.picketbox.quickstarts.configuration.CustomConfigurationPovider. Like which resources should be protected, how they should be protected, etc.
+
+Deploy and access the quickstart
+-----------
+
+To deploy this quickstart follow the instructions at the README file located at the project root directory.
+
+You can access the quickstart using the following URL:
+
+	http://localhost:8080/simple-http-digest-auth/

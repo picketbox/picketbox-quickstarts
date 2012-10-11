@@ -76,7 +76,7 @@ Edit your JBOSS_HOME/standalone/configuration/standalone.xml and add a new conne
 Deploy and access the quickstart
 -----------
 
-To deploy this quickstart follow the instructions at the README file located at this project root directory.
+To deploy this quickstart follow the instructions at the README file located at the project root directory.
 
 You can access the quickstart using the following URL:
 
