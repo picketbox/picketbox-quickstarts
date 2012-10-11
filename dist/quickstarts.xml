@@ -9,15 +9,11 @@
 			</source>
 		</file>
 		<file>
-			<source>../ldap-idm/target/ldap-idm.war
-			</source>
-		</file>
-		<file>
 			<source>../simple-http-basic-auth/target/simple-http-basic-auth.war
 			</source>
 		</file>
 		<file>
-			<source>../simple-http-clientcert-auth/target/simple-http-clientcert-auth.war
+			<source>../simple-http-cert-auth/target/simple-http-cert-auth.war
 			</source>
 		</file>
 		<file>
@@ -34,10 +30,6 @@
 		</file>
 		<file>
 			<source>../simple-ldap-auth/target/simple-ldap-auth.war
-			</source>
-		</file>
-		<file>
-			<source>../solder-integration/target/solder-integration.war
 			</source>
 		</file>
 	</files>
