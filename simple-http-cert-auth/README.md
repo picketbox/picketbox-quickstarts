@@ -37,7 +37,7 @@ And the PicketBox Security filter definition
 
 All the PicketBox configuration is done with org.picketbox.quickstarts.configuration.CustomConfigurationPovider. Like which resources should be protected, how they should be protected, etc.
 
-Configuring JBoss AS7 SSL+CLIENT-CERT ?
+Configuring JBoss AS7 SSL+CLIENT-CERT
 -----------
 
 This quickstart uses CLIENT-CERT to authenticate users. That said, you need to properly configure your JBoss AS7 installation in order to setup SSL and to validate client certificates.
@@ -59,9 +59,25 @@ Edit your JBOSS_HOME/standalone/configuration/standalone.xml and add a new conne
             ...
             
             <connector name="https" protocol="HTTP/1.1" scheme="https" socket-binding="https" secure="true">
-                <ssl name="https" key-alias="servercert" password="servercert" certificate-key-file="/path_to_cert/server.pfx" protocol="TLSv1" verify-client="true" ca-certificate-file="/path_to_cert/server.pfx" keystore-type="PKCS12" truststore-type="PKCS12"/>
+                <ssl 	name="https" 
+                		key-alias="servercert" 
+                		password="servercert" 
+                		certificate-key-file="/path_to_cert/server.pfx" 
+                		protocol="TLSv1" verify-client="true" 
+                		ca-certificate-file="/path_to_cert/server.pfx" 
+                		keystore-type="PKCS12" 
+                		truststore-type="PKCS12"/>
             </connector>
 
 			...
 			
         </subsystem>
+        
+Deploy and access the quickstart
+-----------
+
+To deploy this quickstart follow the instructions at the README file located at this project root directory.
+
+You can access the quickstart using the following URL:
+
+	https://localhost:8443/simple-http-cert-auth/index.jsp
