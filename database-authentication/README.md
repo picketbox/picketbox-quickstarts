@@ -78,7 +78,9 @@ You can always define your own strategy about how the EntityManager is available
     configurationBuilder
     	.identityManager()
     		.jpaStore()
-    			.template(new MyCustomJPATemplate());	
+    			.template(new MyCustomJPATemplate());
+    			
+PicketBox already provides some specific implementations for JPATemplates, beside the default. For example, for CDI environments, etc.
 
 Deploy and access the quickstart
 -----------
