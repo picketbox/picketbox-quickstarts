@@ -9,10 +9,10 @@
 		<version>5.0.0-SNAPSHOT</version>
 		<relativePath>../parent</relativePath>
 	</parent>
-	<artifactId>simple-http-digest-auth</artifactId>
+	<artifactId>http-basic</artifactId>
 	<packaging>war</packaging>
-	<name>PicketBox HTTP Digest Authentication Example</name>
-	<description>This example application demonstrates how to use HTTP Digest authentication.</description>
+	<name>PicketBox HTTP: Simple HTTP BASIC authentication.</name>
+	<description>This example application demonstrates how to use HTTP BASIC authentication.</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.picketbox</groupId>

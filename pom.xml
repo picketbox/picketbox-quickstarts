@@ -17,12 +17,12 @@
 		<module>static-web-resources</module>
 		<module>common</module>
 		<module>parent</module>
-		<module>simple-http-basic-auth</module>
-		<module>simple-http-form-auth</module>
-		<module>simple-http-digest-auth</module>
-		<module>simple-http-cert-auth</module>
-		<module>simple-ldap-auth</module>
-		<module>simple-jpa-auth</module>
+		<module>http-basic</module>
+		<module>http-form</module>
+		<module>http-digest</module>
+		<module>http-cert</module>
+		<module>ldap-authentication</module>
+		<module>database-authentication</module>
 		<module>drools-authorization</module>
 		<module>dist</module>
 	</modules>

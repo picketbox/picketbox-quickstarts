@@ -1,4 +1,4 @@
-HTTP CLIENT_CERT Authentication Example
+HTTP CLIENT-CERT Authentication Example
 ===================
 
 What is it?

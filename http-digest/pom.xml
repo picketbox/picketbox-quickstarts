@@ -9,10 +9,10 @@
 		<version>5.0.0-SNAPSHOT</version>
 		<relativePath>../parent</relativePath>
 	</parent>
-	<artifactId>simple-http-cert-auth</artifactId>
+	<artifactId>http-digest</artifactId>
 	<packaging>war</packaging>
-	<name>PicketBox HTTP Client-Cert Authentication Example</name>
-	<description>This example application demonstrates how to use HTTP Client-Cert authentication.</description>
+	<name>PicketBox HTTP: Simple HTTP DIGEST authentication.</name>
+	<description>This example application demonstrates how to use HTTP DIGEST authentication.</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.picketbox</groupId>

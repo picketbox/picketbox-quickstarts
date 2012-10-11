@@ -9,27 +9,27 @@
 			</source>
 		</file>
 		<file>
-			<source>../simple-http-basic-auth/target/simple-http-basic-auth.war
+			<source>../http-basic/target/http-basic.war
 			</source>
 		</file>
 		<file>
-			<source>../simple-http-cert-auth/target/simple-http-cert-auth.war
+			<source>../http-cert/target/http-cert.war
 			</source>
 		</file>
 		<file>
-			<source>../simple-http-digest-auth/target/simple-http-digest-auth.war
+			<source>../http-digest/target/http-digest.war
 			</source>
 		</file>
 		<file>
-			<source>../simple-http-form-auth/target/simple-http-form-auth.war
+			<source>../http-form/target/http-form.war
 			</source>
 		</file>
 		<file>
-			<source>../simple-jpa-auth/target/simple-jpa-auth.war
+			<source>../database-authentication/target/database-authentication.war
 			</source>
 		</file>
 		<file>
-			<source>../simple-ldap-auth/target/simple-ldap-auth.war
+			<source>../ldap-authentication/target/ldap-authentication.war
 			</source>
 		</file>
 	</files>
