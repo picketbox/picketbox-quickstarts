@@ -79,8 +79,6 @@ Review the README file in the root folder of the quickstart for specific details
 
 1. The command used to build the quickstart depends on the individual quickstart, the server version, and how you configured Maven.
 
-	* If you are running JBoss AS 7, it uses community artifacts available in the Maven central repository, so command line arguments are not usually required.
-
 2. See the README file in each individual quickstart folder for specific details and information on how to run and access the example.
 
 #### Build the Quickstart Archive
