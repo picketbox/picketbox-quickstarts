@@ -46,7 +46,11 @@ To run these quickstarts with the provided build scripts, you need the following
 3. The JBoss AS 7 distribution ZIP.
     * For information on how to install and run JBoss, refer to the documentation.
 
-4. You can also use [JBoss Developer Studio or Eclipse](#useeclipse) to run the quickstarts.
+4. An HTML5 compatible browser such as Chrome, Safari 5+, Firefox 5+, or IE 9+ are recommended.
+
+5. You can also use [JBoss Developer Studio or Eclipse](#useeclipse) to run the quickstarts.
+
+With the prerequisites out of the way, you're ready to build and deploy.
 
 <a id="runningquickstarts"></a>
 Run the Quickstarts 
