@@ -23,11 +23,12 @@
 		available to PicketBox. This is NOT a PicketBox requirement, usually you 
 		would use some framework that already provides such thing. -->
 	<filter>
-		<filter-name>EntityManager Propagation Filter</filter-name>
-		<filter-class>org.picketbox.quickstarts.filter.EntityManagerPropagationFilter</filter-class>
+		<filter-name>JTA Transaction Manager Filter</filter-name>
+		<filter-class>org.picketbox.quickstarts.filter.JTATransactionManagerFilter</filter-class>
 	</filter>
+	<!-- This filter will configure the JPA EntityManager and JTA Transactions for each request -->
 	<filter-mapping>
-		<filter-name>EntityManager Propagation Filter</filter-name>
+		<filter-name>JTA Transaction Manager Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!-- Configures all resources as protected by the PicketBox Security Filter -->

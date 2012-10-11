@@ -1,7 +1,7 @@
 HTTP FORM and Database Authentication using a JPA-based Identity Store
 ===================
 
-What is it?
+What is it ?
 -----------
 
 This example demonstrates how to authenticate users using a HTTP FORM scheme and a JPA-based(database) Identity Store.  
@@ -35,15 +35,15 @@ The PicketBox Security filter definition
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-And a simple filter to propagate the JPA EntityManager and make it available to PicketBox
+And a simple filter to configure the JPA EntityManager and JTA Transactions and make it available to PicketBox
 
 	<filter>
-		<filter-name>EntityManager Propagation Filter</filter-name>
-		<filter-class>org.picketbox.quickstarts.filter.EntityManagerPropagationFilter</filter-class>
+		<filter-name>JTA Transaction Manager Filter</filter-name>
+		<filter-class>org.picketbox.quickstarts.filter.JTATransactionManagerFilter</filter-class>
 	</filter>
 	
 The filter above is not required by PicketBox. Usually you would use some framework that already provide such capabilities.  
-	
+
 All the PicketBox configuration is done with *org.picketbox.quickstarts.configuration.CustomConfigurationPovider*. Like which resources should be protected, how they should be protected, etc.
 
 Persistence Configuration
