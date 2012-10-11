@@ -1,6 +1,4 @@
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -13,7 +11,28 @@
 	<packaging>war</packaging>
 	<name>PicketBox HTTP: Database Authentication using a JPA Identity Store.</name>
 	<description>This example demonstrates how to use PicketBox HTTP to authenticate users using a HTTP FORM scheme and a JPA-based Identity Store.</description>
-	<properties>
-		<picketbox.solder.version>5.0.0-SNAPSHOT</picketbox.solder.version>
-	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>http-form</artifactId>
+			<version>${picketbox.core.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox-quickstarts-common</artifactId>
+			<version>${picketbox.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
