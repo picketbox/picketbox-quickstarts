@@ -1,51 +1,54 @@
-Authentication using a JPA/JDBC Identity Store
+HTTP FORM and Database Authentication using a JPA-based Identity Store
 ===================
 
 What is it?
 -----------
 
-This example demonstrates how to use the JPA/JDBC Authentication Manager to validate users credentials using a database.
+This example demonstrates how to authenticate users using a HTTP FORM scheme and a JPA-based(database) Identity Store.  
 
-The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
+You can check the configuration by looking at the web deployment descriptor located at:
 
-To login, please use: admin/admin. You can check the org.picketbox.quickstarts.authentication.jpa.DatabaseInitializer for more information about how users are populated.
+	src/main/webapp/WEB-INF/web.xml
 
-System requirements
+The configuration is done by defining a context parameter to configure HTTP FORM Authentication
+
+	<context-param>
+		<param-name>org.picketbox.authentication</param-name>
+		<param-value>FORM</param-value>
+	</context-param>
+	
+Another context parameter to define the PicketBox Configuration Provider implementation
+
+	<context-param>
+		<param-name>org.picketbox.configuration.provider</param-name>
+		<param-value>org.picketbox.quickstarts.configuration.CustomConfigurationPovider</param-value>
+	</context-param>
+
+The PicketBox Security filter definition
+
+	<filter>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<filter-class>org.picketbox.http.filters.DelegatingSecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+And a simple filter to propagate the JPA EntityManager and make it available to PicketBox
+
+	<filter>
+		<filter-name>EntityManager Propagation Filter</filter-name>
+		<filter-class>org.picketbox.quickstarts.filter.EntityManagerPropagationFilter</filter-class>
+	</filter>
+	
+All the PicketBox configuration is done *with org.picketbox.quickstarts.configuration.CustomConfigurationPovider*. Like which resources should be protected, how they should be protected, etc.
+
+Deploy and access the quickstart
 -----------
 
-All you need to build this project is Java 6.0 (Java SDK 1.6) or better, Maven 3.0 or better.
+To deploy this quickstart follow the instructions at the README file located at the project root directory.
 
-The application this project produces is designed to be run on JBoss AS 7 or JBoss Enterprise Application Platform 6.
+You can access the quickstart using the following URL:
 
-An HTML5 compatible browser such as Chrome, Safari 5+, Firefox 5+, or IE 9+ are required.
-
-With the prerequisites out of the way, you're ready to build and deploy.
-
-Deploying the application
------------
-
-### Deploying locally
-
-First you need to start the JBoss container. To do this, run
-
-	$JBOSS_HOME/bin/standalone.sh
-
-or if you are using windows
-
-	$JBOSS_HOME/bin/standalone.bat
-
-To deploy the application, you first need to produce the archive to deploy using the following Maven goal:
-
-	mvn package
-
-You can now deploy the artifact by executing the following command:
-
-	mvn jboss-as:deploy
-
-This will deploy both the client and service applications.
-
-The application will be running at the following URL http://localhost:8080/${artifactId}/.
-
-To undeploy run this command:
-
-	mvn jboss-as:undeploy
+	http://localhost:8080/simple-http-form-auth/
