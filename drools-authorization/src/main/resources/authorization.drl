@@ -1,30 +1,20 @@
 package org.picketbox.drools.authorization;
 
+import org.picketbox.core.UserContext;
 import java.security.Principal;
 import org.picketbox.core.authorization.Resource;
 
 dialect "mvel"
 
-rule "Authorize if principal == admin"
+rule "Authorize if principal == droolsuser with role == guest"
 dialect "java"
 no-loop
  when
-  $principal : Principal( name == "admin" ) // condition
+  $principal : Principal( name == "droolsuser" )
   $resource : Resource()
+  $userContext : UserContext (hasRole('guest'))
  then
     modify ($resource){
        setAuthorized(true)
-    };
-end
-
-rule "Authorize if principal == guest"
-dialect "java"
-no-loop
- when
-  $principal : Principal( name == "guest" ) // condition
-  $resource : Resource()
- then
-    modify ($resource){
-       setAuthorized(false)
     };
 end

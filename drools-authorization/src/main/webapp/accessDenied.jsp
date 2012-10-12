@@ -20,15 +20,26 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <html>
 <head>
-<title>PicketBox Quickstarts: PicketBox Drools Authorization Example</title>
-<link rel="StyleSheet" href="resources/css/idp.css" type="text/css">
+<title>PicketBox Quickstarts: PicketBox Http Form Example</title>
+<link rel="StyleSheet" href="resources/css/theme.css" type="text/css">
 </head>
-
 <body>
-	<img src="resources/images/picketbox-banner-1180px.png" class="picketboxBanner"/>
-	<center><h1>403 - Access Denied</h1></center>
+	<div class="defaultBodyContainer">
+		<h2>
+			<p>403 - Access denied ! You can not access this resource.</p>
+		</h2>
+	</div>
+	<div id="footerContainer">
+		<div id="footerContent">
+			<span class="footerContentLeft"><a
+				href="http://jboss.org/picketbox">PicketBox at JBoss.Org</a><span
+				class="footerContentSeparator">|</span><a
+				href="http://github.com/picketbox">Follow us on Github</a><span
+				class="footerContentSeparator">|</span><a
+				href="https://docs.jboss.org/author/display/SECURITY">Documentation</a></span>
+		</div>
+	</div>
 </body>
 </html>

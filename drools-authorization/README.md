@@ -1,53 +1,102 @@
-Drools Authorization Example
+HTTP FORM and Resource Protection using Drools Authorization
 ===================
 
-What is it?
+What is it ?
 -----------
 
-This example demonstrates the use of PicketBox in a web application for authentication and authorization using Drools.
+This example demonstrates how to authorize access to your application resources using Drools.  
 
-The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
+You can check the configuration by looking at the web deployment descriptor located at:
 
-It provides a simple authorization example based on two user accounts: admin/admin and guest/guest. Admin users should be able to login, but guest users should receive a 403 status response. 
+	src/main/webapp/WEB-INF/web.xml
 
-To authenticate users is used a properties file located at */src/main/resources/users.properties*.
+The configuration is done by defining a context parameter to configure HTTP FORM Authentication
 
-System requirements
+	<context-param>
+		<param-name>org.picketbox.authentication</param-name>
+		<param-value>FORM</param-value>
+	</context-param>
+	
+Another context parameter to define the PicketBox Configuration Provider implementation
+
+	<context-param>
+		<param-name>org.picketbox.configuration.provider</param-name>
+		<param-value>org.picketbox.quickstarts.configuration.CustomConfigurationPovider</param-value>
+	</context-param>
+
+The PicketBox Security filter definition
+
+	<filter>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<filter-class>org.picketbox.http.filters.DelegatingSecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+All the PicketBox configuration is done with *org.picketbox.quickstarts.configuration.CustomConfigurationPovider*. Like which resources should be protected, how they should be protected, etc.
+
+Drools Configuration
 -----------
 
-All you need to build this project is Java 6.0 (Java SDK 1.6) or better, Maven 3.0 or better.
+The Drools rules are defined in the following file 
 
-The application this project produces is designed to be run on JBoss AS 7 or JBoss Enterprise Application Platform 6.
+	/src/main/resources/authorization.drl
+	
+The file above defines a Drools rule that allows access to the */droolsProtectedResource.jsp* only for the user *droolsuser* (username) and role *guest*.
 
-An HTML5 compatible browser such as Chrome, Safari 5+, Firefox 5+, or IE 9+ are required.
+You can check the PicketBox configuration by checking the *org.picketbox.quickstarts.configuration.CustomConfigurationPovider* class
 
-With the prerequisites out of the way, you're ready to build and deploy.
+	HTTPConfigurationBuilder configurationBuilder = new HTTPConfigurationBuilder();
+        
+    // configures the Drools Authorization Manager
+    configurationBuilder
+        .authorization()
+            .manager(new PicketBoxDroolsAuthorizationManager());
+    
+    // protected resources configuration
+    configurationBuilder.protectedResource()
+            // the access denied error page should not be protected.
+            .resource("/accessDenied.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+            // define a specific protected resource. This authorization will be done by Drools.
+            .resource("/droolsProtectedResource.jsp", "guest")
+            // defines that all resources should require AUTHENTICATION. They will be available only for users with a role named 'guest'.
+            .resource("/*", ProtectedResourceConstraint.AUTHENTICATION, "guest");
 
-Deploying the application
+The configuration above defines a custom PicketBox AuthorizationManager. In this case the *PicketBoxDroolsAuthorizationManager* implementation. This class is provided by the PicketBox Drools project.
+
+We also define some additional configuration for the protected resources. 
+
+First, the /accessDenied.jsp page is defined as not protected because it is public.
+
+    // the access denied error page should not be protected.
+    .resource("/accessDenied.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+
+We also define a specific pattern that matches the /droosProtectedResource.jsp
+
+	// define a specific protected resource. This authorization will be done by Drools.
+    .resource("/droolsProtectedResource.jsp", "guest")
+    
+And finally, we define a configuration that matches all application resources and applying for them a constraint that they should require only AUTHENTICATION. If you do not use the AUTHENTICATION constraint PicketBox will understand that all resources should be authorized. We want authorization only for the droolsProtectedResource.jsp page. 
+  
+
+How to Use
 -----------
 
-### Deploying locally
+Deploy the application and create a new user by clicking the *Register* button. Create an user with User ID *droolsuser*.
 
-First you need to start the JBoss container. To do this, run
+Now you can login and try to access the Drools protected resource using the following URL
 
-	$JBOSS_HOME/bin/standalone.sh
+	http://localhost:8080/drools-authorization/droolsProtectedResource.jsp
+	
+Try to create different users with a different User ID to see the access denied page.
 
-or if you are using windows
+Deploy and access the quickstart
+-----------
 
-	$JBOSS_HOME/bin/standalone.bat
+To deploy this quickstart follow the instructions at the README file located at the project root directory.
 
-To deploy the application, you first need to produce the archive to deploy using the following Maven goal:
+You can access the quickstart using the following URL:
 
-	mvn package
-
-You can now deploy the artifact by executing the following command:
-
-	mvn jboss-as:deploy
-
-This will deploy both the client and service applications.
-
-The application will be running at the following URL http://localhost:8080/${artifactId}/.
-
-To undeploy run this command:
-
-	mvn jboss-as:undeploy
+	http://localhost:8080/database-authentication/
