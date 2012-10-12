@@ -4,7 +4,7 @@ HTTP FORM and Resource Protection using Drools Authorization
 What is it ?
 -----------
 
-This example demonstrates how to authorize access to your application resources using Drools.  
+This example demonstrates how to control access to your application resources using Drools.  
 
 You can check the configuration by looking at the web deployment descriptor located at:
 
