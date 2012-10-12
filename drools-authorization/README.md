@@ -74,7 +74,8 @@ You can check the PicketBox configuration by checking the *org.picketbox.quickst
             .resource("/accessDenied.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
             // define a specific protected resource. This authorization will be done by Drools.
             .resource("/droolsProtectedResource.jsp", "guest")
-            // defines that all resources should require AUTHENTICATION. They will be available only for users with a role named 'guest'.
+            // defines that all resources should require AUTHENTICATION. 
+            // They will be available only for users with a role named 'guest'.
             .resource("/*", ProtectedResourceConstraint.AUTHENTICATION, "guest");
 
 The configuration above defines a custom PicketBox AuthorizationManager. In this case the *PicketBoxDroolsAuthorizationManager* implementation. This class is provided by the [PicketBox Drools](https://docs.jboss.org/author/display/SECURITY/Drools+Authorization) project.
