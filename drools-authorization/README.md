@@ -46,6 +46,19 @@ The Drools rules are defined in the following file
 	
 The file above defines a Drools rule that allows access to the */droolsProtectedResource.jsp* only for the user *droolsuser* (username) and role *guest*.
 
+	rule "Authorize if principal == droolsuser with role == guest"
+	dialect "java"
+	no-loop
+		when
+	  		$principal : Principal( name == "droolsuser" )
+	  		$resource : Resource()
+	  		$userContext : UserContext (hasRole('guest'))
+	 	then
+	    	modify ($resource) {
+	       		setAuthorized(true)
+	    	};
+	end
+
 You can check the PicketBox configuration by checking the *org.picketbox.quickstarts.configuration.CustomConfigurationPovider* class
 
 	HTTPConfigurationBuilder configurationBuilder = new HTTPConfigurationBuilder();
