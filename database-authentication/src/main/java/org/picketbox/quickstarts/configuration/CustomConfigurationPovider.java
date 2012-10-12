@@ -51,6 +51,7 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
         // configures a JPA-based identity store.
         configurationBuilder.identityManager().jpaStore();
         
+        // protected resources configuration
         configurationBuilder.protectedResource()
                 // unprotected resource. Usually this will be your application's static resources like CSS, JS, etc.
                 .resource("/resources/*", ProtectedResourceConstraint.NOT_PROTECTED)

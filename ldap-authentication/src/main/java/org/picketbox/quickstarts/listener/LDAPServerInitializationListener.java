@@ -20,11 +20,13 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-package org.picketbox.quickstarts.configuration;
+package org.picketbox.quickstarts.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import org.picketbox.quickstarts.ldap.EmbbededADS;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>

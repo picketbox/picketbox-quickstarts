@@ -47,7 +47,8 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
     @Override
     public HTTPConfigurationBuilder getBuilder(ServletContext servletcontext) {
         HTTPConfigurationBuilder configurationBuilder = new HTTPConfigurationBuilder();
-
+        
+        // configures a LDAP-based identity store
         configurationBuilder
             .identityManager()
                 .ldapStore()
@@ -57,6 +58,7 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
                     .userDNSuffix("ou=People,dc=jboss,dc=org")
                     .roleDNSuffix("ou=Roles,dc=jboss,dc=org");
 
+        // protected resources configuration
         configurationBuilder.protectedResource()
                 // unprotected resource. Usually this will be your application's static resources like CSS, JS, etc.
                 .resource("/resources/*", ProtectedResourceConstraint.NOT_PROTECTED)

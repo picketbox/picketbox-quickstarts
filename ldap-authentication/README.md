@@ -1,49 +1,72 @@
-Authentication using a LDAP Identity Store
+HTTP FORM and LDAP Authentication using a JPA-based Identity Store
 ===================
 
-What is it?
+What is it ?
 -----------
 
-This example demonstrates how to use the LDAP Authentication Manager to validate users credentials using a LDAP server.
+This example demonstrates how to authenticate users using a HTTP FORM scheme and a LDAP-based Identity Store.  
 
-The example can be deployed using Maven from the command line or from Eclipse using JBoss Tools.
+You can check the configuration by looking at the web deployment descriptor located at:
 
-System requirements
+	src/main/webapp/WEB-INF/web.xml
+
+The configuration is done by defining a context parameter to configure HTTP FORM Authentication
+
+	<context-param>
+		<param-name>org.picketbox.authentication</param-name>
+		<param-value>FORM</param-value>
+	</context-param>
+	
+Another context parameter to define the PicketBox Configuration Provider implementation
+
+	<context-param>
+		<param-name>org.picketbox.configuration.provider</param-name>
+		<param-value>org.picketbox.quickstarts.configuration.CustomConfigurationPovider</param-value>
+	</context-param>
+
+The PicketBox Security filter definition
+
+	<filter>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<filter-class>org.picketbox.http.filters.DelegatingSecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PicketBox Delegating Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+All the PicketBox configuration is done with *org.picketbox.quickstarts.configuration.CustomConfigurationPovider*. Like which resources should be protected, how they should be protected, etc.
+
+LDAP Configuration
 -----------
 
-All you need to build this project is Java 6.0 (Java SDK 1.6) or better, Maven 3.0 or better.
+This quickstart have a Embbeded ApacheDS LDAP Server. When the application is deployed the server is automatically started by the 
 
-The application this project produces is designed to be run on JBoss AS 7 or JBoss Enterprise Application Platform 6.
+	org.picketbox.quickstarts.listener.LDAPServerInitializationListener
 
-An HTML5 compatible browser such as Chrome, Safari 5+, Firefox 5+, or IE 9+ are required.
+During the server startup the directory is populated with some default informations. You can check the LDIF file at 
 
-With the prerequisites out of the way, you're ready to build and deploy.
+	src/main/resources/ldap/users.ldif
+	
+Another important thing is how you configure PicketBox to use the LDAP Identity Store. This is done by the *org.picketbox.quickstarts.configuration.CustomConfigurationPovider*
 
-Deploying the application
+	HTTPConfigurationBuilder configurationBuilder = new HTTPConfigurationBuilder();
+        
+	// configures a LDAP-based identity store.
+    configurationBuilder
+            .identityManager()
+                .ldapStore()
+                    .url("ldap://localhost:10389/")
+                    .bindDN("uid=jduke,ou=People,dc=jboss,dc=org")
+                    .bindCredential("theduke")
+                    .userDNSuffix("ou=People,dc=jboss,dc=org")
+                    .roleDNSuffix("ou=Roles,dc=jboss,dc=org");
+    
+Deploy and access the quickstart
 -----------
 
-### Deploying locally
+To deploy this quickstart follow the instructions at the README file located at the project root directory.
 
-First you need to start the JBoss container. To do this, run
+You can access the quickstart using the following URL:
 
-	$JBOSS_HOME/bin/standalone.sh
-
-or if you are using windows
-
-	$JBOSS_HOME/bin/standalone.bat
-
-To deploy the application, you first need to produce the archive to deploy using the following Maven goal:
-
-	mvn package
-
-You can now deploy the artifact by executing the following command:
-
-	mvn jboss-as:deploy
-
-This will deploy both the client and service applications.
-
-The application will be running at the following URL http://localhost:8080/${artifactId}/.
-
-To undeploy run this command:
-
-	mvn jboss-as:undeploy
+	http://localhost:8080/ldap-authentication/

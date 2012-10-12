@@ -11,6 +11,9 @@
 	<packaging>war</packaging>
 	<name>PicketBox HTTP LDAP Authentication Example</name>
 	<description>This example application demonstrates how to use HTTP FORM authentication using an LDAP Identity Store.</description>
+	<properties>
+		<apache.ds.version>1.5.5</apache.ds.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.picketbox</groupId>
@@ -26,7 +29,7 @@
 		<dependency>
 			<groupId>org.apache.directory.server</groupId>
 			<artifactId>apacheds-all</artifactId>
-			<version>1.5.5</version>
+			<version>${apache.ds.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.directory.shared</groupId>

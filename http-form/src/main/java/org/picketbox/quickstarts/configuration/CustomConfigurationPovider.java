@@ -48,6 +48,7 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
     public HTTPConfigurationBuilder getBuilder(ServletContext servletcontext) {
         HTTPConfigurationBuilder configurationBuilder = new HTTPConfigurationBuilder();
         
+        // protected resources configuration
         configurationBuilder.protectedResource()
                 // unprotected resource. Usually this will be your application's static resources like CSS, JS, etc.
                 .resource("/resources/*", ProtectedResourceConstraint.NOT_PROTECTED)
