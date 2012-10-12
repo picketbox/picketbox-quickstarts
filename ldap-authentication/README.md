@@ -1,4 +1,4 @@
-HTTP FORM and LDAP Authentication using a JPA-based Identity Store
+HTTP FORM and LDAP Authentication using a LDAP-based Identity Store
 ===================
 
 What is it ?
