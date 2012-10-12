@@ -44,6 +44,7 @@ public class LDAPServerInitializationListener implements ServletContextListener 
     public void contextInitialized(ServletContextEvent sce) {
         try {
             this.ldapServer = new EmbbededADS();
+            this.ldapServer.importLDIF("ldap/users.ldif");
             this.ldapServer.start();
         } catch (Exception e) {
             e.printStackTrace();

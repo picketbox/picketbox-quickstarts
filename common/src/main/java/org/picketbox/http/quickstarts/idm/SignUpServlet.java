@@ -84,8 +84,12 @@ public class SignUpServlet extends HttpServlet {
 
         // updates user's password
         identityManager.updatePassword(user, password);
-
-        Role guestRole = identityManager.createRole("guest");
+        
+        Role guestRole = identityManager.getRole("guest");
+        
+        if (guestRole == null) {
+            guestRole = identityManager.createRole("guest");
+        }
 
         // grant role guest to this user
         identityManager.grantRole(guestRole, user, null);

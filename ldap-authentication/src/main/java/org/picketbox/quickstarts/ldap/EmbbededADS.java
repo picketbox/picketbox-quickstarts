@@ -79,7 +79,6 @@ public class EmbbededADS {
             FileUtils.deleteDirectory(workingDirectory);
             workingDirectory.mkdirs();
         }
-
         
         service.setWorkingDirectory(workingDirectory);
 
@@ -95,8 +94,7 @@ public class EmbbededADS {
         }
 
         server = new LdapServer();
-        int serverPort = 10389;
-        server.setTransports(new TcpTransport(serverPort));
+        server.setTransports(new TcpTransport(10389));
         server.setDirectoryService(service);
     }
 
