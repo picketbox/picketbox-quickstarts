@@ -77,7 +77,7 @@ You can check the PicketBox configuration by checking the *org.picketbox.quickst
             // defines that all resources should require AUTHENTICATION. They will be available only for users with a role named 'guest'.
             .resource("/*", ProtectedResourceConstraint.AUTHENTICATION, "guest");
 
-The configuration above defines a custom PicketBox AuthorizationManager. In this case the *PicketBoxDroolsAuthorizationManager* implementation. This class is provided by the PicketBox Drools project.
+The configuration above defines a custom PicketBox AuthorizationManager. In this case the *PicketBoxDroolsAuthorizationManager* implementation. This class is provided by the [PicketBox Drools](https://docs.jboss.org/author/display/SECURITY/Drools+Authorization): project.
 
 We also define some additional configuration for the protected resources. 
 
