@@ -92,7 +92,7 @@ We also define a specific pattern that matches the /droosProtectedResource.jsp
 	// define a specific protected resource. This authorization will be done by Drools.
     .resource("/droolsProtectedResource.jsp", "guest")
     
-And finally, we define a configuration that matches all application resources and applying for them a constraint that they should require only AUTHENTICATION. If you do not use the AUTHENTICATION constraint PicketBox will understand that all resources should be authorized. We want authorization only for the droolsProtectedResource.jsp page. 
+And finally, we define a configuration that matches all application resources and applying for them a constraint that they should require only AUTHENTICATION. If you do not use the AUTHENTICATION constraint PicketBox will understand that all resources should be authorized too. We want authorization only for the droolsProtectedResource.jsp page. 
   
 
 How to Use
