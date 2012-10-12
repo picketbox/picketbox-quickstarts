@@ -23,23 +23,19 @@
 package org.picketbox.quickstarts.ldap;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashSet;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.directory.server.core.CoreSession;
 import org.apache.directory.server.core.DefaultDirectoryService;
 import org.apache.directory.server.core.entry.DefaultServerEntry;
-import org.apache.directory.server.core.entry.ServerEntry;
 import org.apache.directory.server.core.partition.Partition;
-import org.apache.directory.server.core.partition.impl.btree.jdbm.JdbmIndex;
 import org.apache.directory.server.core.partition.impl.btree.jdbm.JdbmPartition;
 import org.apache.directory.server.ldap.LdapServer;
 import org.apache.directory.server.protocol.shared.transport.TcpTransport;
-import org.apache.directory.server.xdbm.Index;
 import org.apache.directory.shared.ldap.ldif.LdifEntry;
 import org.apache.directory.shared.ldap.ldif.LdifReader;
-import org.apache.directory.shared.ldap.name.LdapDN;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
@@ -47,6 +43,7 @@ import org.apache.directory.shared.ldap.name.LdapDN;
  */
 public class EmbbededADS {
 
+    private static final String DEFAULT_WORKING_DIR = System.getProperty("java.io.tmpdir") + "/picketbox-embbeded-ldap-server";
     private DefaultDirectoryService service;
     private LdapServer server;
 
@@ -65,15 +62,29 @@ public class EmbbededADS {
         service = new DefaultDirectoryService();
 
         // Disable the ChangeLog system
-        service.getChangeLog().setEnabled(true);
+        service.getChangeLog().setEnabled(false);
 
-        // Create a new partition named 'apache'.
-        Partition jbossPartition = addPartition("jboss", "dc=jboss,dc=org");
+        // Create the default partition
+        createDefaultPartition();
 
-        // Index some attributes on the apache partition
-        addIndex(jbossPartition, "objectClass", "ou", "uid");
+        initializeWorkingDir();
+        
+        // And start the service
+        startServer();
+        
+        // import default data 
+        importLDIF("ldap/users.ldif");
+    }
 
-        File workingDirectory = new File(System.getProperty("java.io.tmpdir") + "/picketbox-embbeded-ldap-server");
+    private void startServer() throws Exception {
+        service.startup();
+        server = new LdapServer();
+        server.setTransports(new TcpTransport(10389));
+        server.setDirectoryService(service);
+    }
+
+    private void initializeWorkingDir() throws IOException {
+        File workingDirectory = new File(DEFAULT_WORKING_DIR);
         
         if (workingDirectory.exists()) {
             FileUtils.deleteDirectory(workingDirectory);
@@ -81,21 +92,6 @@ public class EmbbededADS {
         }
         
         service.setWorkingDirectory(workingDirectory);
-
-        // And start the service
-        service.startup();
-
-        if (!service.getAdminSession().exists(jbossPartition.getSuffixDn())) {
-            LdapDN dnJBoss = new LdapDN("dc=jboss,dc=org");
-            ServerEntry entryApache = service.newEntry(dnJBoss);
-            entryApache.add("objectClass", "top", "domain", "extensibleObject");
-            entryApache.add("dc", "apache");
-            service.getAdminSession().add(entryApache);
-        }
-
-        server = new LdapServer();
-        server.setTransports(new TcpTransport(10389));
-        server.setDirectoryService(service);
     }
 
     public void start() throws Exception {
@@ -103,10 +99,12 @@ public class EmbbededADS {
     }
 
     public void stop() {
-        server.stop();
+        if (server.isStarted()) {
+            server.stop();            
+        }
     }
 
-    public void importLDIF(String fileName) throws Exception {
+    private void importLDIF(String fileName) throws Exception {
         InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
         CoreSession rootDSE = service.getAdminSession();
         
@@ -121,37 +119,19 @@ public class EmbbededADS {
     }
 
     /**
-     * Add a new partition to the server
+     * Add a default partition to the server
      * 
      * @param partitionId The partition Id
      * @param partitionDn The partition DN
      * @return The newly added partition
      * @throws Exception If the partition can't be added
      */
-    private Partition addPartition(String partitionId, String partitionDn) throws Exception {
-        // Create a new partition named 'foo'.
+    private void createDefaultPartition() throws Exception {
         Partition partition = new JdbmPartition();
-        partition.setId(partitionId);
-        partition.setSuffix(partitionDn);
+        partition.setId("jboss");
+        partition.setSuffix("dc=jboss,dc=org");
+        
         service.addPartition(partition);
-
-        return partition;
     }
 
-    /**
-     * Add a new set of index on the given attributes
-     * 
-     * @param partition The partition on which we want to add index
-     * @param attrs The list of attributes to index
-     */
-    private void addIndex(Partition partition, String... attrs) {
-        // Index some attributes on the apache partition
-        HashSet<Index<?, ServerEntry>> indexedAttributes = new HashSet<Index<?, ServerEntry>>();
-
-        for (String attribute : attrs) {
-            indexedAttributes.add(new JdbmIndex<String, ServerEntry>(attribute));
-        }
-
-        ((JdbmPartition) partition).setIndexedAttributes(indexedAttributes);
-    }
 }
