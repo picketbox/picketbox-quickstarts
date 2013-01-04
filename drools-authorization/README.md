@@ -74,10 +74,11 @@ You can check the PicketBox configuration by checking the *org.picketbox.quickst
             .resource("/accessDenied.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
             // define a specific protected resource. This authorization will be done by Drools.
             .resource("/droolsProtectedResource.jsp", "guest")
-            // defines that all resources should require AUTHENTICATION. They will be available only for users with a role named 'guest'.
+            // defines that all resources should require AUTHENTICATION. 
+            // They will be available only for users with a role named 'guest'.
             .resource("/*", ProtectedResourceConstraint.AUTHENTICATION, "guest");
 
-The configuration above defines a custom PicketBox AuthorizationManager. In this case the *PicketBoxDroolsAuthorizationManager* implementation. This class is provided by the PicketBox Drools project.
+The configuration above defines a custom PicketBox AuthorizationManager. In this case the *PicketBoxDroolsAuthorizationManager* implementation. This class is provided by the [PicketBox Drools](https://docs.jboss.org/author/display/SECURITY/Drools+Authorization) project.
 
 We also define some additional configuration for the protected resources. 
 
@@ -91,7 +92,7 @@ We also define a specific pattern that matches the /droosProtectedResource.jsp
 	// define a specific protected resource. This authorization will be done by Drools.
     .resource("/droolsProtectedResource.jsp", "guest")
     
-And finally, we define a configuration that matches all application resources and applying for them a constraint that they should require only AUTHENTICATION. If you do not use the AUTHENTICATION constraint PicketBox will understand that all resources should be authorized. We want authorization only for the droolsProtectedResource.jsp page. 
+And finally, we define a configuration that matches all application resources and applying for them a constraint that they should require only AUTHENTICATION. If you do not use the AUTHENTICATION constraint PicketBox will understand that all resources should be authorized too. We want authorization only for the droolsProtectedResource.jsp page. 
   
 
 How to Use
@@ -112,4 +113,4 @@ To deploy this quickstart follow the instructions at the README file located at 
 
 You can access the quickstart using the following URL:
 
-	http://localhost:8080/database-authentication/
+	http://localhost:8080/drools-authorization/
