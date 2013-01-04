@@ -35,12 +35,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.transaction.UserTransaction;
 
-import org.picketbox.core.identity.impl.EntityManagerContext;
+import org.picketbox.core.identity.impl.JPAIdentityStoreContext;
 
 /**
  * <p>
  * Simple {@link Filter} that intercepts all requests to make the {@link EntityManager} available to PicketBox by using the
- * {@link EntityManagerContext}. This is necessary to make the {@link EntityManager} available to the JPA-based Identity Store
+ * {@link JPAIdentityStoreContext}. This is necessary to make the {@link EntityManager} available to the JPA-based Identity Store
  * </p>
  * <p>
  * It also begins a transaction at the beginning and the end of the request processing.
@@ -71,7 +71,7 @@ public class JTATransactionManagerFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
             ServletException {
         // uses the EntityManagerContext to make the EntityManager available to the JPA Identity Store.
-        EntityManagerContext.set(this.entityManager);
+        JPAIdentityStoreContext.set(this.entityManager);
 
         try {
             this.userTransaction.begin();
@@ -88,7 +88,7 @@ public class JTATransactionManagerFilter implements Filter {
             }
         } finally {
             // clear the context.
-            EntityManagerContext.clear();
+            JPAIdentityStoreContext.clear();
         }
     }
 

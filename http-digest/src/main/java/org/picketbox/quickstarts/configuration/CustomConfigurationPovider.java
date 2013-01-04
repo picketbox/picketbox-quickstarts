@@ -55,10 +55,12 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
                 // the login page is marked as not protected.
                 .resource("/", ProtectedResourceConstraint.NOT_PROTECTED)
                 .resource("/login.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
-                // the register page is marked as not protected.
-                .resource("/signup.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                // the user register resources is marked as not protected.
+                .resource("/services/register", ProtectedResourceConstraint.NOT_PROTECTED)
+                .resource("/services/checkUsername", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the register page is marked as not protected.
                 .resource("/signup", ProtectedResourceConstraint.NOT_PROTECTED)
+                .resource("/signup.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the error page is marked as not protected.
                 .resource("/error.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // protected all resources. They will be available only for users with a role named 'guest'.

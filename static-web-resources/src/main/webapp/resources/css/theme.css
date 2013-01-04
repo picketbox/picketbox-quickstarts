@@ -183,6 +183,17 @@ input[type='text'] {
 	border-radius: 5px;
 }
 
+input[type='email'] {
+	height: 40px;
+	width: 95%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 input[type='password'] {
 	height: 40px;
 	width: 95%;

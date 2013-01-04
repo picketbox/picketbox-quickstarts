@@ -23,23 +23,34 @@
 <html>
 <head>
 <title>PicketBox Quickstarts: PicketBox Http Form Example</title>
-<link rel="StyleSheet" href="resources/css/theme.css" type="text/css">
+<link rel="StyleSheet" href="resources/css/theme.css" />
+<script>
+var appContext = '<%= request.getContextPath() %>';
+</script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write( '<script src="resources/js/jquery.min.js"><\/script>' )</script>
+<script src="resources/js/register.js"></script>
 </head>
 <body>
-	<div class="defaultBoxContainer" style="height: 500px;width: 400px;">
+	<div class="defaultBoxContainer" style="height: 540px;width: 400px;">
 		<h2>
 			<p>
-				Your Information: <span style="font-size: 13px;color: red;">
+				Your Information:
+				<center>
+				<span style="font-size: 13px;color: red;">
 					<% if (request.getSession().getAttribute("message") != null)  out.println(request.getSession().getAttribute("message")); else out.println(""); %>
 				</span>
+				</center>
 			</p>
 		</h2>
 		<div style="">
+			<div id="register-msg" style="color: red"></div>
 			<form id="signup_form" name="signup_form" method="post"
 				action="signup" enctype="application/x-www-form-urlencoded">
 				<p>
 					<label for="firstName">User ID: </label> <br /> <input type="text"
-						id="userId" name="userId" size="32" required="required" /> *
+						id="username" name="username" size="32" required="required" /> *
 				</p>
 				<p>
 					<label for="firstName">First Name:</label> <br /> <input
@@ -51,7 +62,7 @@
 						id="lastName" name="lastName" size="32" required="required" /> *
 				</p>
 				<p>
-					<label for="email">E-mail:</label> <br /> <input type="text"
+					<label for="email">E-mail:</label> <br /> <input type="email"
 						id="email" name="email" size="32" required="required" /> *
 				</p>
 				<p>
@@ -64,10 +75,9 @@
 						type="password" id="confirmPassword" name="confirmPassword"
 						required="required" /> *
 				</p>
-				<br />
 				<p>
 				<center>
-					<input class="loginBtn2" type="submit" value="Finish" />
+					<input class="loginBtn2" type="submit" value="Finish" id="register-btn" />
 					<input class="loginBtn2" type="button" value="Back" onclick="window.location='<%= request.getContextPath() %>'"/>
 				</center>
 				</p>

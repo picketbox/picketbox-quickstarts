@@ -33,9 +33,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.picketbox.core.PicketBoxManager;
-import org.picketbox.core.authentication.PicketBoxConstants;
+import org.picketbox.http.PicketBoxConstants;
 import org.picketlink.idm.IdentityManager;
+import org.picketlink.idm.credential.PlainTextPassword;
 import org.picketlink.idm.model.Role;
+import org.picketlink.idm.model.SimpleRole;
+import org.picketlink.idm.model.SimpleUser;
 import org.picketlink.idm.model.User;
 
 /**
@@ -49,55 +52,92 @@ import org.picketlink.idm.model.User;
 @WebServlet(urlPatterns = { "/signup" })
 public class SignUpServlet extends HttpServlet {
 
+    private static final String ROLE_GUEST = "guest";
     private static final long serialVersionUID = 7251985700185294184L;
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userId = req.getParameter("userId");
+        String username = req.getParameter("username");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
-
-        IdentityManager identityManager = getIdentityManager(req);
-
-        // if user already exists
-        if (identityManager.getUser(userId) != null) {
-            req.getSession().setAttribute("message", "User ID already in use.");
-            req.getRequestDispatcher("/signup.jsp").forward(req, resp);
-            return;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            req.getSession().setAttribute("message", "Password mismatch.");
-            req.getRequestDispatcher("/signup.jsp").forward(req, resp);
-            return;
-        }
-
-        // create the user
-        User user = identityManager.createUser(userId);
+        
+        User user = new SimpleUser(username);
 
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
+        
+        String validationMessage = validateUser(user);
+        
+        if (validationMessage == null) {
+            validationMessage = validatePassword(password, confirmPassword);            
+        }
+        
+        if (validationMessage != null) {
+            req.getSession().setAttribute("message", validationMessage);
+            req.getRequestDispatcher("/signup.jsp").forward(req, resp);
+        } else {
+            IdentityManager identityManager = getIdentityManager(req);
+            
+            // creates the user
+            identityManager.add(user);
 
-        // updates user's password
-        identityManager.updatePassword(user, password);
+            // updates user's password
+            PlainTextPassword credential = new PlainTextPassword(password.toCharArray());
+
+            identityManager.updateCredential(user, credential);
+
+            // creates the default role
+            Role guestRole = identityManager.getRole(ROLE_GUEST);
+
+            if (guestRole == null) {
+                guestRole = new SimpleRole(ROLE_GUEST);
+                identityManager.add(guestRole);
+            }
+
+            // grant role guest to this user
+            identityManager.grantRole(user, guestRole);
+
+            resp.sendRedirect("login.jsp?signin=true");  
+        }
+    }
+
+    private String validatePassword(String password, String confirmation) {
+        String validationMessage = null;
         
-        Role guestRole = identityManager.getRole("guest");
-        
-        if (guestRole == null) {
-            guestRole = identityManager.createRole("guest");
+        if ("".equals(password.trim())) {
+            validationMessage = "Your Password is required.";
         }
 
-        // grant role guest to this user
-        identityManager.grantRole(guestRole, user, null);
+        if (!password.equals(confirmation)) {
+            validationMessage = "Password mismatch.";
+        }
+        
+        return validationMessage;
+    }
+    
+    private String validateUser(User user) {
+        String validationMessage = null;
 
-        resp.sendRedirect("login.jsp?signin=true");
+        if (user.getId() == null || "".equals(user.getId().trim())) {
+            validationMessage = "Choose a User ID.";
+        } else if (user.getFirstName() == null || "".equals(user.getFirstName().trim())) {
+            validationMessage = "Your First Name is required.";
+        } else if (user.getLastName() != null || "".equals(user.getLastName().trim())) {
+            validationMessage = "Your Last Name is required.";
+        } else if (user.getEmail() != null || "".equals(user.getEmail().trim())) {
+            validationMessage = "Your Email is required.";
+        }
+        
+        return validationMessage;
     }
 
     /**
@@ -112,8 +152,7 @@ public class SignUpServlet extends HttpServlet {
     private IdentityManager getIdentityManager(HttpServletRequest req) {
         PicketBoxManager picketBoxManager = (PicketBoxManager) req.getServletContext().getAttribute(
                 PicketBoxConstants.PICKETBOX_MANAGER);
-        IdentityManager identityManager = picketBoxManager.getIdentityManager();
-        return identityManager;
+        return picketBoxManager.getIdentityManager();
     }
 
 }

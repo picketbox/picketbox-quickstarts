@@ -11,4 +11,20 @@
 	<packaging>war</packaging>
 	<name>Static Resources Shared by the Quickstarts</name>
 	<description>Static Resources shared by the quickstarts.</description>
+
+	<build>
+		<plugins>
+			<!-- The JBoss AS plugin deploys your apps to a local JBoss AS container -->
+			<!-- Disabling it here means that we don't try to deploy this POM! -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.1.1.Final</version>
+				<inherited>true</inherited>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
