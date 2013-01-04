@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.picketbox</groupId>
 	<artifactId>picketbox-quickstarts-parent</artifactId>
-	<version>5.0.0-SNAPSHOT</version>
+	<version>5.0.0-2013Jan04</version>
 	<packaging>pom</packaging>
 	<name>PicketBox Quickstarts Parent POM</name>
 	<description>PicketBox Quickstarts Parent POM</description>
@@ -43,7 +43,7 @@
 		</snapshotRepository>
 	</distributionManagement>
 	<properties>
-		<picketbox.core.version>5.0.0-SNAPSHOT</picketbox.core.version>
+		<picketbox.core.version>5.0.0-2013Jan04</picketbox.core.version>
 		<javaee6.spec.version>3.0.0.Beta1</javaee6.spec.version>
 	</properties>
 	<dependencyManagement>
