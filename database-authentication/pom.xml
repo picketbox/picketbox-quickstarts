@@ -15,13 +15,13 @@
 		<dependency>
 			<groupId>org.picketbox</groupId>
 			<artifactId>http-form</artifactId>
-			<version>${picketbox.core.version}</version>
+			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.picketbox</groupId>
 			<artifactId>picketbox-quickstarts-common</artifactId>
-			<version>${picketbox.core.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>

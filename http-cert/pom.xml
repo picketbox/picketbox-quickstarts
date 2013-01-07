@@ -17,13 +17,13 @@
 		<dependency>
 			<groupId>org.picketbox</groupId>
 			<artifactId>static-web-resources</artifactId>
-			<version>${picketbox.core.version}</version>
+			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>org.picketbox</groupId>
 			<artifactId>picketbox-quickstarts-common</artifactId>
-			<version>${picketbox.core.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>
