@@ -80,4 +80,4 @@ To deploy this quickstart follow the instructions at the README file located at 
 
 You can access the quickstart using the following URL:
 
-	https://localhost:8443/simple-http-cert-auth/index.jsp
+	https://localhost:8443/http-cert/index.jsp
