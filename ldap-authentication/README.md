@@ -60,6 +60,7 @@ Another important thing is how you configure PicketBox to use the LDAP Identity 
                     .bindDN("uid=jduke,ou=People,dc=jboss,dc=org")
                     .bindCredential("theduke")
                     .userDNSuffix("ou=People,dc=jboss,dc=org")
+                    .groupDNSuffix("ou=Groups,dc=jboss,dc=org")
                     .roleDNSuffix("ou=Roles,dc=jboss,dc=org");
     
 Deploy and access the quickstart
