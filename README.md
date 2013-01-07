@@ -78,6 +78,10 @@ The README for each quickstart will specify which configuration is required to r
 <a id="buildanddeploy"></a>
 ### Build and Deploy the Quickstarts 
 
+After cloning the repository, navigate to the root directory and execute the following command:
+
+		mvn clean install
+
 Review the README file in the root folder of the quickstart for specific details on how to build and run the example. In most cases you do the following:
 
 1. The command used to build the quickstart depends on the individual quickstart, the server version, and how you configured Maven.
