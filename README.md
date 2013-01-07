@@ -22,7 +22,7 @@ Suggested Approach to the Quickstarts
 
 We suggest you approach the quickstarts as follows:
 
-* Regardless of your level of expertise, we suggest you start with the **simple-http-form-auth** quickstart. It is the simplest example and is an easy way to prove your server is configured and started correctly.
+* Regardless of your level of expertise, we suggest you start with the **http-form** quickstart. It is the simplest example and is an easy way to prove your server is configured and started correctly.
 * We recommend that you look [PicketBox documentation](https://docs.jboss.org/author/display/SECURITY/) to understand some basic concepts. These are important to make the quickstarts more comprehensible.
 * Read the documentation for each quickstart before using it. You can find useful description and additional information about how to use it or what it demonstrates.
 
