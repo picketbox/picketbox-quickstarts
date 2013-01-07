@@ -44,4 +44,4 @@ To deploy this quickstart follow the instructions at the README file located at 
 
 You can access the quickstart using the following URL:
 
-	http://localhost:8080/simple-http-digest-auth/
+	http://localhost:8080/http-digest/
