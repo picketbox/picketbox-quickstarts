@@ -44,7 +44,7 @@
 		</snapshotRepository>
 	</distributionManagement>
 	<properties>
-		<picketbox.core.version>5.0.0-SNAPSHOT</picketbox.core.version>
+		<picketbox.core.version>5.0.0-2013Jan04</picketbox.core.version>
 		<javaee6.spec.version>3.0.0.Beta1</javaee6.spec.version>
 	</properties>
 	<dependencyManagement>
