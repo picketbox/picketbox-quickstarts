@@ -80,7 +80,7 @@ public class RegistrationEndpoint {
             return response;
         }
 
-        if (isUsernameAlreadyInUse(request)) {
+        if (isUsernameNotInUse(request)) {
             User user = new SimpleUser(request.getUserName());
 
             user.setFirstName(request.getFirstName());
@@ -114,13 +114,13 @@ public class RegistrationEndpoint {
 
     /**
      * <p>
-     * Checks if the provided username is already in use.
+     * Checks if the provided username is not in use.
      * </p>
      * 
      * @param request
      * @return
      */
-    private boolean isUsernameAlreadyInUse(final RegistrationRequest request) {
+    private boolean isUsernameNotInUse(final RegistrationRequest request) {
         return getIdentityManager().getUser(request.getUserName()) == null;
     }
 
