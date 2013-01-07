@@ -93,9 +93,6 @@ public class RegistrationEndpoint {
             
             PlainTextPassword password = new PlainTextPassword(request.getPassword().toCharArray());
             
-            // disable encoding for DIGEST authentication
-            password.setEncodePassword(false);
-            
             identityManager.updateCredential(user, password);
             
             Role roleGuest = identityManager.getRole("guest");
