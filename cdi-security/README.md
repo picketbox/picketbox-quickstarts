@@ -50,7 +50,7 @@ The persistence.xml is located at
 
 	/src/main/resources/META-INF/persistence.xml
 	
-Another important thing is how you configure PicketBox to use the JPA Identity Store. This is done by the *org.picketbox.quickstarts.configuration.CustomConfigurationPovider*
+Another important thing is how you configure PicketBox to use the JPA Identity Store. This is done by the *org.picketbox.quickstarts.configuration.SecurityConfigurationProducer*
 
 	ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
         

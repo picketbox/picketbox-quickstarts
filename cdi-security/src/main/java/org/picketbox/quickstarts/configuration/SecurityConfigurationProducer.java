@@ -33,15 +33,14 @@ import org.picketbox.http.resource.ProtectedResourceConstraint;
 
 /**
  * <p>
- * Implementation for the {@link ConfigurationBuilderProvider} interface that demonstrates how to use the Configuration API to
- * configure web applications.
+ * Configures PicketBox.
  * </p>
  * 
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
  * 
  */
 @ApplicationScoped
-public class CustomConfigurationPovider {
+public class SecurityConfigurationProducer {
 
     @Inject
     private DefaultJPATemplate jpaTemplate;
