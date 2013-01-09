@@ -6,10 +6,12 @@ What is it ?
 
 This example demonstrates how to enable security for CDI Applications using PicketBox CDI extensions.  
 
+This example uses CDI, JSF 2.0 + Richfaces 4 and JPA.
+
 Security Configuration
 -----------
 
-All resources located at /cdi-security/private/* are protected by default. This is done by a security filter called *org.picketbox.quickstarts.cdi.security.SecurityFilter*.
+All resources located at */cdi-security/private/* are protected by default. This is done by a security filter called *org.picketbox.quickstarts.cdi.security.SecurityFilter*.
 
 You'll also notice that we defined at CDI Interceptor at /WEB-INF/beans.xml:
 
