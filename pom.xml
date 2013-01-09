@@ -24,6 +24,7 @@
 		<module>ldap-authentication</module>
 		<module>database-authentication</module>
 		<module>drools-authorization</module>
+		<module>cdi-security</module>
 		<module>dist</module>
 	</modules>
 </project>

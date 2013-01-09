@@ -1,0 +1,213 @@
+/*
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright (c) 2011, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+*/
+body {
+	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll
+		0 0 #F3F3F3;
+	font: 12px/1.4 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#loginBody {
+	background: url(../images/picketbox-banner-1180px.png) no-repeat scroll
+		0 0 #F3F3F3;
+	color: #555555;
+}
+
+.loginBox {
+	background: url(../images/picketbox_icon_256x.png) no-repeat scroll 0 0
+		#F3F3F3;
+	background-size: 40%;
+	background-position: 92px 10px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 300px;
+	margin-top: -15em; /*set to a negative number 1/2 of your height*/
+	margin-left: -15em; /*set to a negative number 1/2 of your width*/
+	border: 1px solid #FFFFFF;
+	background-color: #E0E0E0;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	position: absolute;
+}
+
+#loginBoxContent {
+	position: relative;
+	margin-top: 180px;
+	margin-left: 15px;
+	z-index: 100;
+}
+
+#loginBtnContainer {
+	margin-top: -50px;
+	margin-left: 208px;
+}
+
+.loginBtn {
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-weight: normal;
+	width: 80px;
+	height: 35px;
+	font: bold 130%/120% "Lucida Grande", Arial, sans-serif;
+	position: relative;
+	margin: 0;
+	color: #404040;
+	letter-spacing: 0px
+}
+
+.loginBtn2 {
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-weight: normal;
+	width: 100px;
+	height: 35px;
+	font: bold 130%/120% "Lucida Grande", Arial, sans-serif;
+	position: relative;
+	margin: 0;
+	color: #404040;
+	letter-spacing: 0px
+}
+
+#footerContainer {
+	height: 98%;
+	position: relative;
+}
+
+#footerContent {
+	width: 100%;
+	height: 10%;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+}
+
+#footerContainer a {
+	color: #686868;
+}
+
+.footerContentLeft {
+	float: left;
+	padding-left: 10px;
+}
+
+.footerContentRight {
+	float: right;
+	padding-right: 10px;
+}
+
+.footerContentSeparator {
+	color: #D8D8D8;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.defaultBoxContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 300px;
+	margin-top: -20em; /*set to a negative number 1/2 of your height*/
+	margin-left: -15em; /*set to a negative number 1/2 of your width*/
+	border: 1px solid #FFFFFF;
+	background-color: #E0E0E0;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	padding-left: 10px;
+	z-index: 999;
+}
+
+.defaultBodyContainer {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	height: 100%;
+	margin-top: -20em; /*set to a negative number 1/2 of your height*/
+	z-index: 999;
+}
+
+input[type='text']::-webkit-input-placeholder {
+	color: #999;
+}
+
+input[type='text']:-moz-placeholder {
+	color: #999;
+}
+
+input[type='text']:-ms-input-placeholder {
+	color: #999;
+}
+
+input[type='password']::-webkit-input-placeholder {
+	color: #999;
+}
+
+input[type='password']:-moz-placeholder {
+	color: #999;
+}
+
+input[type='password']:-ms-input-placeholder {
+	color: #999;
+}
+
+input[type='text'] {
+	height: 40px;
+	width: 95%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+input[type='email'] {
+	height: 40px;
+	width: 95%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+input[type='password'] {
+	height: 40px;
+	width: 95%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: black;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+label {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	color: black;
+}

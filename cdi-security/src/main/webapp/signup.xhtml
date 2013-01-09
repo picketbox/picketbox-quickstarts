@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<title>PicketBox Quickstarts: CDI Security Example</title>
+	<h:outputStylesheet library="css" name="theme.css" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:messages />
+		<h:panelGrid>
+			<h:outputText value="User ID: " styleClass="label" />
+			<h:inputText value="#{newUser.userName}" label="User ID" />
+			<h:outputText value="First Name: " styleClass="label" />
+			<h:inputText value="#{newUser.firstName}" label="First Name" />
+			<h:outputText value="Last Name: " styleClass="label" />
+			<h:inputText value="#{newUser.lastName}" label="Last Name" />
+			<h:outputText value="Email: " styleClass="label" />
+			<h:inputText value="#{newUser.email}" label="Email" />
+			<h:outputText value="Password: " styleClass="label" />
+			<h:inputSecret value="#{newUser.password}" label="Password" />
+			<h:outputText value="Password Confirmation: " styleClass="label" />
+			<h:inputSecret value="#{newUser.passwordConfirmation}" label="Password Confirmation" />
+		</h:panelGrid>
+		<p>
+			<div id="loginBtnContainer">
+				<h:commandButton value="Ok" action="#{signUpBean.signup()}" styleClass="loginBtn" />
+			</div>
+		</p>
+	</h:form>
+</h:body>
+
+</html>

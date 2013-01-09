@@ -32,5 +32,9 @@
 			<source>../ldap-authentication/target/ldap-authentication.war
 			</source>
 		</file>
+		<file>
+			<source>../cdi-security/target/cdi-security.war
+			</source>
+		</file>
 	</files>
 </assembly>
