@@ -21,6 +21,7 @@
 		<class>org.picketlink.idm.jpa.schema.IdentityObject</class>
 		<class>org.picketlink.idm.jpa.schema.MembershipObject</class>
 		<class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
+		<class>org.picketlink.idm.jpa.schema.CredentialObject</class>
 		<class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
