@@ -19,11 +19,13 @@
 			source, this example data source is just for development and testing! -->
 		<!-- The datasource is deployed as WEB-INF/picketbox-ds.xml, 
 			you can find it in the source at src/main/webapp/WEB-INF/picketbox-ds.xml -->
-		<jta-data-source>java:jboss/datasources/PicketBoxDS</jta-data-source>
+		<jta-data-source>java:jboss/datasources/DatabaseAuthcExampleDS</jta-data-source>
 		
 		<class>org.picketlink.idm.jpa.schema.IdentityObject</class>
+		<class>org.picketlink.idm.jpa.schema.CredentialObject</class>
 		<class>org.picketlink.idm.jpa.schema.MembershipObject</class>
 		<class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
+		<class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
