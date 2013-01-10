@@ -33,7 +33,7 @@ import javax.ws.rs.core.MediaType;
 import org.picketbox.core.PicketBoxManager;
 import org.picketbox.http.PicketBoxConstants;
 import org.picketlink.idm.IdentityManager;
-import org.picketlink.idm.credential.PlainTextPassword;
+import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleRole;
 import org.picketlink.idm.model.SimpleUser;
@@ -91,7 +91,7 @@ public class RegistrationEndpoint {
             
             identityManager.add(user);
             
-            PlainTextPassword password = new PlainTextPassword(request.getPassword().toCharArray());
+            Password password = new Password(request.getPassword().toCharArray());
             
             identityManager.updateCredential(user, password);
             

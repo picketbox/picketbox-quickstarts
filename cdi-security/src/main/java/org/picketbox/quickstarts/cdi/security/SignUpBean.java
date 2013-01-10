@@ -29,7 +29,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.picketlink.idm.IdentityManager;
-import org.picketlink.idm.credential.PlainTextPassword;
+import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.Group;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleGroup;
@@ -70,7 +70,7 @@ public class SignUpBean {
 
             this.identityManager.add(user);
 
-            PlainTextPassword password = new PlainTextPassword(this.newUser.getPassword().toCharArray());
+            Password password = new Password(this.newUser.getPassword().toCharArray());
 
             this.identityManager.updateCredential(user, password);
             

@@ -4,10 +4,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import org.picketbox.cdi.idm.DefaultJPATemplate;
+import org.picketbox.cdi.idm.DefaultEntityManagerLookupStrategy;
 import org.picketbox.core.config.ConfigurationBuilder;
-import org.picketbox.http.config.ConfigurationBuilderProvider;
-import org.picketbox.http.resource.ProtectedResourceConstraint;
 
 /*
  * JBoss, Home of Professional Open Source.
@@ -43,14 +41,14 @@ import org.picketbox.http.resource.ProtectedResourceConstraint;
 public class SecurityConfigurationProducer {
 
     @Inject
-    private DefaultJPATemplate jpaTemplate;
+    private DefaultEntityManagerLookupStrategy entityManagerLookupStrategy;
 
     @Produces
     public ConfigurationBuilder configure() {
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 
         // configures a JPA-based identity store.
-        configurationBuilder.identityManager().jpaStore().template(this.jpaTemplate);
+        configurationBuilder.identityManager().jpaStore().entityManagerLookupStrategy(this.entityManagerLookupStrategy);
 
         return configurationBuilder;
     }

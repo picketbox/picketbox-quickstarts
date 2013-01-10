@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.picketbox.core.PicketBoxManager;
 import org.picketbox.http.PicketBoxConstants;
 import org.picketlink.idm.IdentityManager;
-import org.picketlink.idm.credential.PlainTextPassword;
+import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleRole;
 import org.picketlink.idm.model.SimpleUser;
@@ -91,7 +91,7 @@ public class SignUpServlet extends HttpServlet {
             identityManager.add(user);
 
             // updates user's password
-            PlainTextPassword credential = new PlainTextPassword(password.toCharArray());
+            Password credential = new Password(password.toCharArray());
 
             identityManager.updateCredential(user, credential);
 

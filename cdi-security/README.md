@@ -6,7 +6,7 @@ What is it ?
 
 This example demonstrates how to enable security for CDI Applications using PicketBox CDI extensions.  
 
-This example uses CDI, JSF 2.0 + Richfaces 4 and JPA.
+This example uses CDI, JSF 2.0 + Richfaces 4, Bean Validation and JPA.
 
 Security Configuration
 -----------
@@ -57,9 +57,10 @@ Another important thing is how you configure PicketBox to use the JPA Identity S
 	// configures a JPA-based identity store.
     configurationBuilder
     	.identityManager()
-    		.jpaStore(this.jpaTemplate);
+    		.jpaStore()
+    		    .entityManagerLookupStrategy(this.entityManagerLookupStrategy);
 
-The *org.picketbox.cdi.idm.DefaultJPATemplate* is used to automatically get the EntityManager using CDI. This is necessary to allow the Identity Manager to persist your users, roles, groups and etc.
+The *org.picketbox.cdi.idm.DefaultEntityManagerLookupStrategy* is used to automatically get the EntityManager using CDI. This is necessary to allow the Identity Manager to persist your users, roles, groups and etc.
 
 Deploy and access the quickstart
 -----------

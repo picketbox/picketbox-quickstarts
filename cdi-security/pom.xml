@@ -12,6 +12,7 @@
 	<name>PicketBox CDI: Security for CDI Applications.</name>
 	<description>This example demonstrates how to use PicketBox CDI enable security in CDI applications.</description>
 	<properties>
+		<version.org.picketbox.cdi>5.0.0-SNAPSHOT</version.org.picketbox.cdi>
 		<version.org.richfaces>4.2.0.Final</version.org.richfaces>
 	</properties>
 	<dependencyManagement>
@@ -31,7 +32,7 @@
 		<dependency>
 			<groupId>org.picketbox</groupId>
 			<artifactId>picketbox-cdi</artifactId>
-			<version>5.0.0-2013Jan04</version>
+			<version>${version.org.picketbox.cdi}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.enterprise</groupId>
@@ -60,11 +61,6 @@
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-jaxrs</artifactId>
-			<version>1.9.2</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
