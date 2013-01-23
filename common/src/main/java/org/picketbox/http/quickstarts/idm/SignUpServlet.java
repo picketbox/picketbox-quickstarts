@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.picketbox.core.PicketBoxManager;
 import org.picketbox.http.PicketBoxConstants;
 import org.picketlink.idm.IdentityManager;
-import org.picketlink.idm.credential.Password;
+import org.picketlink.idm.credential.internal.Password;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleRole;
 import org.picketlink.idm.model.SimpleUser;

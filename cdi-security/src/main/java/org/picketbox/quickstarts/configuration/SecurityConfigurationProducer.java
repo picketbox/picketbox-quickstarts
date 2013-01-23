@@ -4,8 +4,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import org.picketbox.cdi.idm.DefaultEntityManagerLookupStrategy;
 import org.picketbox.core.config.ConfigurationBuilder;
+import org.picketlink.extensions.core.pbox.idm.DefaultEntityManagerLookupStrategy;
 
 /*
  * JBoss, Home of Professional Open Source.

@@ -32,8 +32,10 @@ import javax.ws.rs.core.MediaType;
 
 import org.picketbox.core.PicketBoxManager;
 import org.picketbox.http.PicketBoxConstants;
+import org.picketbox.http.authentication.AbstractHTTPAuthentication;
 import org.picketlink.idm.IdentityManager;
-import org.picketlink.idm.credential.Password;
+import org.picketlink.idm.credential.internal.Digest;
+import org.picketlink.idm.credential.internal.Password;
 import org.picketlink.idm.model.Role;
 import org.picketlink.idm.model.SimpleRole;
 import org.picketlink.idm.model.SimpleUser;
@@ -94,6 +96,14 @@ public class RegistrationEndpoint {
             Password password = new Password(request.getPassword().toCharArray());
             
             identityManager.updateCredential(user, password);
+            
+            Digest digest = new Digest();
+            
+            digest.setUsername(user.getLoginName());
+            digest.setRealm(AbstractHTTPAuthentication.DEFAULT_REALM);
+            digest.setPassword(request.getPassword());
+            
+            identityManager.updateCredential(user, digest);
             
             Role roleGuest = identityManager.getRole("guest");
             

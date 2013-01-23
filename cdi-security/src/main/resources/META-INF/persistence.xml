@@ -19,10 +19,14 @@
 		<jta-data-source>java:jboss/datasources/CDISecurityExampleDS</jta-data-source>
 		
 		<class>org.picketlink.idm.jpa.schema.IdentityObject</class>
-		<class>org.picketlink.idm.jpa.schema.MembershipObject</class>
-		<class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
-		<class>org.picketlink.idm.jpa.schema.CredentialObject</class>
-		<class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute</class>
+        <class>org.picketlink.idm.jpa.schema.PartitionObject</class>
+        <class>org.picketlink.idm.jpa.schema.RelationshipObject</class>
+        <class>org.picketlink.idm.jpa.schema.RelationshipIdentityObject</class>
+        <class>org.picketlink.idm.jpa.schema.RelationshipObjectAttribute</class>
+        <class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
+        <class>org.picketlink.idm.jpa.schema.CredentialObject</class>
+        <class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute</class>
+        
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>

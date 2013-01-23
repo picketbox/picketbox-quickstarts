@@ -22,31 +22,10 @@
 
 package org.picketbox.quickstarts.cdi.security;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.picketlink.Identity;
-
 /**
- * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
- * 
+ * @author Pedro Silva
+ *
  */
-@RequestScoped
-@Named
-public class LogoutBean {
+public class TestEndpoint {
 
-    private static final long serialVersionUID = 1L;
-
-    @Inject
-    private Identity identity;
-
-
-    public String logout() {
-        if (this.identity.isLoggedIn()) {
-            this.identity.logout();    
-        }
-        
-        return "/login.xhtml";
-    }
 }

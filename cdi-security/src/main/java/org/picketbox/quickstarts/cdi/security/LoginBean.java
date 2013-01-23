@@ -22,15 +22,13 @@
 
 package org.picketbox.quickstarts.cdi.security;
 
-import java.io.Serializable;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.picketbox.cdi.LoginCredential;
 import org.picketbox.core.authentication.credential.UsernamePasswordCredential;
 import org.picketlink.Identity;
+import org.picketlink.extensions.core.pbox.LoginCredential;
 
 /**
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
