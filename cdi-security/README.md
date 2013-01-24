@@ -4,7 +4,7 @@ CDI Security Example
 What is it ?
 -----------
 
-This example demonstrates how to enable security for CDI Applications using PicketBox CDI extensions.  
+This example demonstrates how to enable security for CDI Applications using PicketLink CDI extensions.  
 
 This example uses CDI, JSF 2.0 + Richfaces 4, Bean Validation and JPA.
 

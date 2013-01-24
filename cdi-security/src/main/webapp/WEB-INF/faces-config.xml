@@ -17,4 +17,10 @@
 		<message-bundle>ValidationMessages</message-bundle>
 	</application>
 
+	<factory>
+		<exception-handler-factory>
+			org.picketbox.quickstarts.cdi.exception.DeltaSpikeExceptionHandlerFactory
+		</exception-handler-factory>
+	</factory>
+
 </faces-config>

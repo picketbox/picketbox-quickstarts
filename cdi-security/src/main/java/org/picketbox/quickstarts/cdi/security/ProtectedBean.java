@@ -22,10 +22,25 @@
 
 package org.picketbox.quickstarts.cdi.security;
 
+import javax.inject.Named;
+
+import org.picketlink.extensions.core.pbox.authorization.RolesAllowed;
+
 /**
  * @author Pedro Silva
  *
  */
-public class TestEndpoint {
+@Named
+public class ProtectedBean {
+
+    @RolesAllowed ("guest")
+    public void onlyGuests() {
+        
+    }
+
+    @RolesAllowed ("admin")
+    public void onlyAdministrators() {
+        
+    }
 
 }

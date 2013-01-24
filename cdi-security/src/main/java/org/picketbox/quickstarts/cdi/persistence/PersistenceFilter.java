@@ -20,11 +20,11 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-package org.picketbox.quickstarts.cdi.security;
+package org.picketbox.quickstarts.cdi.persistence;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -32,19 +32,21 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-
-import org.picketlink.Identity;
+import javax.transaction.UserTransaction;
 
 /**
+ * <p>
+ * Simple filter to control the transaction boundaries.
+ * </p>
+ * 
  * @author <a href="mailto:psilva@redhat.com">Pedro Silva</a>
  * 
  */
-@WebFilter(urlPatterns = "/private/*")
-public class SecurityFilter implements Filter {
+@WebFilter(urlPatterns = "/*")
+public class PersistenceFilter implements Filter {
 
-    @Inject
-    private Identity identity;
+    @Resource
+    private UserTransaction userTransaction;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -53,17 +55,17 @@ public class SecurityFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
-        if (!this.identity.isLoggedIn()) {
-            HttpServletRequest request = (HttpServletRequest) req;
-
-            if (request.getRequestURI().startsWith(request.getContextPath() + "/private")) {
-                req.getServletContext().getRequestDispatcher("/login.jsf").forward(req, response);
-            } else {
-                chain.doFilter(request, response);
-            }
-        } else {
+        try {
+            this.userTransaction.begin();
             chain.doFilter(req, response);
+            this.userTransaction.commit();
+        } catch (Exception e) {
+            try {
+                this.userTransaction.rollback();
+            } catch (Exception e1) {
+            }
+        } finally {
+
         }
     }
 

@@ -26,6 +26,12 @@
 				Click here to
 				<h:commandLink value="Logout" action="#{logoutBean.logout()}" />
 			</h2>
+			<h2>
+				You CAN access the <h:commandLink value="ProtectedBean.onlyGuests" action="#{protectedBean.onlyGuests()}"/> method.
+			</h2>
+			<h2>
+				You CAN NOT access the <h:commandLink value="ProtectedBean.onlyAdministrators" action="#{protectedBean.onlyAdministrators()}"/> method.
+			</h2>
 		</h:form>
 	</ui:define>
 </ui:composition>

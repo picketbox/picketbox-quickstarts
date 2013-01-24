@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>picketbox-quickstarts-parent</artifactId>
 		<groupId>org.picketbox</groupId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.0.0-2013Jan24</version>
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>cdi-security</artifactId>
@@ -12,7 +12,7 @@
 	<name>PicketLink Extensions: Security for CDI Applications.</name>
 	<description>This example demonstrates how to use PicketBox CDI enable security in CDI applications.</description>
 	<properties>
-		<version.org.picketlink.ext>3.0.0-SNAPSHOT</version.org.picketlink.ext>
+		<version.org.picketlink.ext>3.0.0-2013Jan24</version.org.picketlink.ext>
 		<version.org.richfaces>4.2.0.Final</version.org.richfaces>
 	</properties>
 	<dependencyManagement>
@@ -70,6 +70,12 @@
 		<dependency>
 			<groupId>org.jboss.spec.javax.servlet</groupId>
 			<artifactId>jboss-servlet-api_3.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
