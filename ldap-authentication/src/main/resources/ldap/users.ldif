@@ -9,20 +9,29 @@ objectclass: top
 objectclass: organizationalUnit
 ou: People
 
-dn: uid=jduke,ou=People,dc=jboss,dc=org
+dn: ou=Agent,dc=jboss,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: Agent
+
+dn: uid=admin,ou=People,dc=jboss,dc=org
 objectclass: top
 objectclass: uidObject
 objectclass: person
+objectclass: extensibleObject
 objectclass: inetOrgPerson
-uid: jduke
-cn: Java Duke
-sn: Duke
-userPassword: theduke
+uid: admin
+cn: The Administrator
+givenname: The
+sn: Administrator
+mail: admin@jboss.org
+userPassword: admin
 
 dn: uid=guest,ou=People,dc=jboss,dc=org
 objectclass: top
 objectclass: uidObject
 objectclass: person
+objectclass: extensibleObject
 objectclass: inetOrgPerson
 uid: guest
 cn: Guest User
@@ -39,19 +48,19 @@ objectclass: top
 objectclass: organizationalUnit
 ou: Groups
 
-dn: cn=guest,ou=Roles,dc=jboss,dc=org
+dn: cn=Echo,ou=Roles,dc=jboss,dc=org
 objectClass: top
 objectClass: groupOfNames
-cn: guest
+cn: Echo
 description: the JBossAdmin group
-member: uid=jduke,ou=People,dc=jboss,dc=org
+member: uid=admin,ou=People,dc=jboss,dc=org
 
-dn: cn=TheDuke,ou=Roles,dc=jboss,dc=org
+dn: cn=Administrator,ou=Roles,dc=jboss,dc=org
 objectClass: groupOfNames
 objectClass: top
-cn: TheDuke
-description: TheDuke role context
-member: uid=jduke,ou=People,dc=jboss,dc=org
+cn: Administrator
+description: Administrator role context
+member: uid=admin,ou=People,dc=jboss,dc=org
 
 dn: cn=Test Group,ou=Groups,dc=jboss,dc=org
 objectClass: top
@@ -59,7 +68,7 @@ objectClass: groupOfNames
 cn: Test Group
 description: the Test Group
 member: cn=Echo,ou=Roles,dc=jboss,dc=org
-member: uid=jduke,ou=People,dc=jboss,dc=org
+member: uid=admin,ou=People,dc=jboss,dc=org
 
 dn: cn=Test Parent Group,ou=Groups,dc=jboss,dc=org
 objectClass: top
