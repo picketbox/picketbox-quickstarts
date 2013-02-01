@@ -53,8 +53,10 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
             .identityManager()
                 .ldapStore()
                     .url("ldap://localhost:10389/")
-                    .bindDN("uid=jduke,ou=People,dc=jboss,dc=org")
-                    .bindCredential("theduke")
+                    .bindDN("uid=admin,ou=system")
+                    .bindCredential("secret")
+                    .baseDN("dc=jboss,dc=org")
+                    .agentDNSuffix("ou=Agent,dc=jboss,dc=org")
                     .userDNSuffix("ou=People,dc=jboss,dc=org")
                     .groupDNSuffix("ou=Groups,dc=jboss,dc=org")
                     .roleDNSuffix("ou=Roles,dc=jboss,dc=org");

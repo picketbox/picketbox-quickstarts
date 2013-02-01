@@ -97,13 +97,17 @@ public class RegistrationEndpoint {
             
             identityManager.updateCredential(user, password);
             
-            Digest digest = new Digest();
-            
-            digest.setUsername(user.getLoginName());
-            digest.setRealm(AbstractHTTPAuthentication.DEFAULT_REALM);
-            digest.setPassword(request.getPassword());
-            
-            identityManager.updateCredential(user, digest);
+            try {
+                Digest digest = new Digest();
+                
+                digest.setUsername(user.getLoginName());
+                digest.setRealm(AbstractHTTPAuthentication.DEFAULT_REALM);
+                digest.setPassword(request.getPassword());
+                
+                identityManager.updateCredential(user, digest);
+            } catch (Exception e) {
+                // ignore if the current store does not support digest credentials. Mainly for the LDAP store.
+            }
             
             Role roleGuest = identityManager.getRole("guest");
             

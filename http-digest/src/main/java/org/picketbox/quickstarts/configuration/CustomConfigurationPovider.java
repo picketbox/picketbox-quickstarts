@@ -55,6 +55,7 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
                 // the login page is marked as not protected.
                 .resource("/", ProtectedResourceConstraint.NOT_PROTECTED)
                 .resource("/login.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                .resource("/error.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the user register resources is marked as not protected.
                 .resource("/services/register", ProtectedResourceConstraint.NOT_PROTECTED)
                 .resource("/services/checkUsername", ProtectedResourceConstraint.NOT_PROTECTED)
