@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>picketbox-quickstarts-parent</artifactId>
 		<groupId>org.picketbox</groupId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.0.1-SNAPSHOT</version>
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>drools-authorization</artifactId>
