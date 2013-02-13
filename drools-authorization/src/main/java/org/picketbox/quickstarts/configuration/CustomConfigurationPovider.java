@@ -54,25 +54,25 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
             .authorization()
                 .manager(new PicketBoxDroolsAuthorizationManager());
         
-        // protected resources configuration
+        // protected restricts configuration
         configurationBuilder.protectedResource()
-                // unprotected resource. Usually this will be your application's static resources like CSS, JS, etc.
-                .resource("/resources/*", ProtectedResourceConstraint.NOT_PROTECTED)
+                // unprotected restrict. Usually this will be your application's static restricts like CSS, JS, etc.
+                .restrict("/restricts/*", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the access denied error page should not be protected.
-                .resource("/accessDenied.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/accessDenied.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the login page is marked as not protected.
-                .resource("/login.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/login.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the register page is marked as not protected.
-                .resource("/signup.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
-                // the user register resources is marked as not protected.
-                .resource("/services/register", ProtectedResourceConstraint.NOT_PROTECTED)
-                .resource("/services/checkUsername", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/signup.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                // the user register restricts is marked as not protected.
+                .restrict("/services/register", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/services/checkUsername", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the error page is marked as not protected.
-                .resource("/error.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
-                // define a specific protected resource. This authorization will be done by Drools.
-                .resource("/droolsProtectedResource.jsp", "guest")
-                // defines that all resources should require AUTHENTICATION. They will be available only for users with a role named 'guest'.
-                .resource("/*", ProtectedResourceConstraint.AUTHENTICATION, "guest");
+                .restrict("/error.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                // define a specific protected restrict. This authorization will be done by Drools.
+                .allowedRoles("/droolsProtectedResource.jsp", "guest")
+                // defines that all restricts should require AUTHENTICATION. They will be available only for users with a role named 'guest'.
+                .allowedRoles("/*", ProtectedResourceConstraint.AUTHENTICATION, "guest");
 
         return configurationBuilder;
     }

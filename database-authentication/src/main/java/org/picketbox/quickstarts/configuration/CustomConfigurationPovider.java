@@ -54,18 +54,18 @@ public class CustomConfigurationPovider implements ConfigurationBuilderProvider 
         // protected resources configuration
         configurationBuilder.protectedResource()
                 // unprotected resource. Usually this will be your application's static resources like CSS, JS, etc.
-                .resource("/resources/*", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/resources/*", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the login page is marked as not protected.
-                .resource("/login.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/login.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the register page is marked as not protected.
-                .resource("/signup.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/signup.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the user register resources is marked as not protected.
-                .resource("/services/register", ProtectedResourceConstraint.NOT_PROTECTED)
-                .resource("/services/checkUsername", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/services/register", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/services/checkUsername", ProtectedResourceConstraint.NOT_PROTECTED)
                 // the error page is marked as not protected.
-                .resource("/error.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
+                .restrict("/error.jsp", ProtectedResourceConstraint.NOT_PROTECTED)
                 // protected all resources. They will be available only for users with a role named 'guest'.
-                .resource("/*", "guest");
+                .allowedRoles("/*", "guest");
 
         return configurationBuilder;
     }
