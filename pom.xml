@@ -26,6 +26,5 @@
 		<module>drools-authorization</module>
 		<module>cdi-security</module>
 		<module>dist</module>
-		<module>contacts</module>
 	</modules>
 </project>
